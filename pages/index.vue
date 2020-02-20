@@ -1,16 +1,26 @@
 <template lang="pug">
   section.container
-    expense-form
+    expense-form(@add="addExpense")
 </template>
 
 <script lang="ts">
+import { defineComponent } from '@vue/composition-api'
+import { Expense } from '~/interfaces/Expense'
 import ExpenseForm from '~/components/expenseForm.vue'
 
-export default {
+export default defineComponent({
   components: {
     ExpenseForm
+  },
+
+  setup () {
+    const addExpense = (expanse: Expense): void => {
+      console.log(expanse)
+    }
+
+    return { addExpense }
   }
-}
+})
 </script>
 
 <style>

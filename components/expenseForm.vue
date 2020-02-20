@@ -1,12 +1,12 @@
 <template lang="pug">
-  form.form
+  form.form(@submit.prevent="submit")
     h1.form__title Мои траты
     .form__group
-      input.form__field(id="amount" type="text" name="amount" placeholder=" ")
+      input.form__field(id="amount" v-model="form.amount" type="text" name="amount" placeholder=" ")
       label.form__label(for="amount") Сумма
 
     .form__group
-      input.form__field(id="comment" type="text" name="comment" placeholder=" ")
+      input.form__field(id="comment" v-model="form.comment" type="text" name="comment" placeholder=" ")
       label.form__label(for="comment") Комментарий
 
     .form__group
@@ -14,25 +14,34 @@
         legend.form__subtitle Категория
 
         .form__radio-group
-          input.form__radio(id="t1" type="radio" name="tag" value="1")
+          input.form__radio(id="t1" v-model="form.tag" type="radio" name="tag" value="1")
           label.form__label(for="t1") Супермаркеты
         .form__radio-group
-          input.form__radio(id="t2" type="radio" name="tag" value="2")
+          input.form__radio(id="t2" v-model="form.tag" type="radio" name="tag" value="2")
           label.form__label(for="t2") Рестораны
         .form__radio-group
-          input.form__radio(id="t3" type="radio" name="tag" value="3")
+          input.form__radio(id="t3" v-model="form.tag" type="radio" name="tag" value="3")
           label.form__label(for="t3") Развлечения
         .form__radio-group
-          input.form__radio(id="t4" type="radio" name="tag" value="4")
+          input.form__radio(id="t4" v-model="form.tag" type="radio" name="tag" value="4")
           label.form__label(for="t4") Транспорт
 
     button.form__button(type="submit") Создать
 </template>
 
 <script lang="ts">
-export default {
-  name: 'ExpenseForm'
-}
+import { defineComponent } from '@vue/composition-api'
+import { useExpenseForm } from '~/compositions/expenseForm'
+
+export default defineComponent({
+  name: 'ExpenseForm',
+
+  setup (props: object, context: object) {
+    const { form, submit } = useExpenseForm(props, context)
+
+    return { form, submit }
+  }
+})
 </script>
 
 <style lang="scss" scoped>
@@ -124,7 +133,7 @@ export default {
     }
   }
 
-  @supports(-webkit-appearance: none) or (-moz-appearance: none) {
+  @supports (-webkit-appearance: none) or (-moz-appearance: none) {
     input[type='radio'] {
       --active: #275EFE;
       --active-inner: #fff;
@@ -146,6 +155,7 @@ export default {
       border: 1px solid var(--bc, var(--border));
       background: var(--b, var(--background));
       transition: background .3s, border-color .3s, box-shadow .2s;
+
       &:after {
         content: '';
         display: block;
@@ -154,6 +164,7 @@ export default {
         position: absolute;
         transition: transform var(--d-t, .3s) var(--d-t-e, ease), opacity var(--d-o, .2s);
       }
+
       &:checked {
         --b: var(--active);
         --bc: var(--active);
@@ -161,18 +172,22 @@ export default {
         --d-t: .6s;
         --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
       }
+
       &:disabled {
         --b: var(--disabled);
         cursor: not-allowed;
         opacity: .9;
+
         &:checked {
           --b: var(--disabled-inner);
           --bc: var(--border);
         }
+
         & + label {
           cursor: not-allowed;
         }
       }
+
       &:hover {
         &:not(:checked) {
           &:not(:disabled) {
@@ -180,18 +195,23 @@ export default {
           }
         }
       }
+
       &:focus {
         box-shadow: 0 0 0 var(--focus);
       }
+
       &:not(.switch) {
         width: 21px;
+
         &:after {
           opacity: var(--o, 0);
         }
+
         &:checked {
           --o: 1;
         }
       }
+
       & + label {
         font-size: 0.9em;
         line-height: 21px;
@@ -204,6 +224,7 @@ export default {
 
     input[type='radio'] {
       border-radius: 50%;
+
       &:after {
         width: 19px;
         height: 19px;
@@ -212,6 +233,7 @@ export default {
         opacity: 0;
         transform: scale(var(--s, .7));
       }
+
       &:checked {
         --s: .5;
       }
