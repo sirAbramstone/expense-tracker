@@ -1,10 +1,15 @@
 <template lang="pug">
   section.container
+    expense-form
 </template>
 
 <script lang="ts">
+import ExpenseForm from '~/components/expenseForm.vue'
+
 export default {
-  components: {}
+  components: {
+    ExpenseForm
+  }
 }
 </script>
 
