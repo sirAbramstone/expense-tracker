@@ -1,24 +1,25 @@
 <template lang="pug">
   section.container
     expense-form(@add="addExpense")
+    expenses-list(:expenses="expenses")
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import { Expense } from '~/interfaces/Expense'
+import { useExpenses } from '~/compositions/expenses'
 import ExpenseForm from '~/components/expenseForm.vue'
+import ExpensesList from '~/components/expensesList.vue'
 
 export default defineComponent({
   components: {
-    ExpenseForm
+    ExpenseForm,
+    ExpensesList
   },
 
   setup () {
-    const addExpense = (expanse: Expense): void => {
-      console.log(expanse)
-    }
+    const { expenses, addExpense } = useExpenses()
 
-    return { addExpense }
+    return { expenses, addExpense }
   }
 })
 </script>
@@ -27,7 +28,7 @@ export default defineComponent({
   .container {
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
   }
