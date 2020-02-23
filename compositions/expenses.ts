@@ -1,11 +1,11 @@
-import { ref } from '@vue/composition-api'
+import { computed, SetupContext } from '@vue/composition-api'
 import { Expense } from '~/interfaces/Expense'
 
-export function useExpenses () {
-  const expenses = ref<Expense[]>([])
+export function useExpenses (props: any, {root: {$accessor}} : SetupContext) {
+  const expenses =  computed(() => $accessor.expense.expenses)
 
   const addExpense = (expense: Expense): void => {
-    expenses.value.push(expense)
+    $accessor.expense.addExpense(expense)
   }
 
   return { expenses, addExpense }

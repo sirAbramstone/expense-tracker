@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent, SetupContext } from '@vue/composition-api'
 import { useExpenses } from '~/compositions/expenses'
 import ExpenseForm from '~/components/expenseForm.vue'
 import ExpensesList from '~/components/expensesList.vue'
@@ -16,9 +16,8 @@ export default defineComponent({
     ExpensesList
   },
 
-  setup () {
-    const { expenses, addExpense } = useExpenses()
-
+  setup (props: any, context: SetupContext) {
+    const { expenses, addExpense } = useExpenses(props, context)
     return { expenses, addExpense }
   }
 })

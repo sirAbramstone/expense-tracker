@@ -10,9 +10,12 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Nuxt.js project' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ]
   },
+  css: [
+    {src: 'modern-css-reset/dist/reset.min.css'}
+  ],
   /*
   ** Customize the progress bar color
   */
@@ -33,8 +36,11 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    transpile: [
+      /typed-vuex/,
+    ],
   },
-  buildModules: ['@nuxt/typescript-build'],
+  buildModules: ['@nuxt/typescript-build', 'nuxt-typed-vuex'],
   plugins: ['@/plugins/composition-api']
 }

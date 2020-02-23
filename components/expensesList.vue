@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '~/node_modules/@vue/composition-api'
+import { defineComponent } from '@vue/composition-api'
 import { Expense } from '~/interfaces/Expense'
 
 export default defineComponent({
