@@ -1,6 +1,6 @@
 import { getAccessorType } from 'nuxt-typed-vuex'
 
-import * as expenseModule from '~/store/expense'
+import * as expenseModule from '~/store/expenseModule.ts'
 
 export const state = () => ({
   name: 'expenses tracker',

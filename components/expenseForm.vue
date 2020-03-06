@@ -2,7 +2,7 @@
   form.form(@submit.prevent="submit")
     h1.form__title Мои траты
     .form__group
-      input.form__field(id="amount" v-model="form.amount" type="text" name="amount" placeholder=" ")
+      input.form__field(id="amount" v-model.number="form.amount" type="text" name="amount" placeholder=" ")
       label.form__label(for="amount") Сумма
 
     .form__group
@@ -14,19 +14,19 @@
         legend.form__subtitle Категория
 
         .form__radio-group
-          input.form__radio(id="t1" v-model="form.tag" type="radio" name="tag" value="1")
+          input.form__radio(id="t1" v-model="form.tag" type="radio" name="tag" value="супермаркеты")
           label.form__label(for="t1") Супермаркеты
         .form__radio-group
-          input.form__radio(id="t2" v-model="form.tag" type="radio" name="tag" value="2")
+          input.form__radio(id="t2" v-model="form.tag" type="radio" name="tag" value="рестораны")
           label.form__label(for="t2") Рестораны
         .form__radio-group
-          input.form__radio(id="t3" v-model="form.tag" type="radio" name="tag" value="3")
+          input.form__radio(id="t3" v-model="form.tag" type="radio" name="tag" value="развлечения")
           label.form__label(for="t3") Развлечения
         .form__radio-group
-          input.form__radio(id="t4" v-model="form.tag" type="radio" name="tag" value="4")
+          input.form__radio(id="t4" v-model="form.tag" type="radio" name="tag" value="транспорт")
           label.form__label(for="t4") Транспорт
 
-    button.form__button(type="submit") Создать
+    button.form__button Создать
 </template>
 
 <script lang="ts">
@@ -36,7 +36,7 @@ import { useExpenseForm } from '~/compositions/expenseForm'
 export default defineComponent({
   name: 'ExpenseForm',
 
-  setup (props: object, context: object) {
+  setup (props: object, context) {
     const { form, submit } = useExpenseForm(props, context)
 
     return { form, submit }
@@ -55,6 +55,7 @@ export default defineComponent({
     font-size: 1rem;
 
     &__title {
+      margin-bottom: 0.75em;
       font-size: 1.5em;
     }
 

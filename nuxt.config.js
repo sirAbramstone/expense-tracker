@@ -14,7 +14,7 @@ module.exports = {
     ]
   },
   css: [
-    {src: 'modern-css-reset/dist/reset.min.css'}
+    {src: 'modern-css-reset'}
   ],
   /*
   ** Customize the progress bar color

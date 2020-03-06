@@ -1,25 +1,21 @@
-import { reactive } from '@vue/composition-api'
+import { reactive, SetupContext } from '@vue/composition-api'
 import { Expense } from '~/interfaces/Expense'
 
 const initialData = (): Expense => ({
   amount: 0,
   comment: '',
-  tag: null
+  tag: '',
 })
 
-export function useExpenseForm (props: object, { emit }: any) {
-  let form: Expense = reactive({
-    amount: 0,
-    comment: '',
-    tag: null
-  })
+export function useExpenseForm (props: object, { emit }: SetupContext) {
+  let form: Expense = reactive(initialData())
 
   const submit = () => {
     const expense: Expense = {
-      amount: Number(form.amount),
+      amount: form.amount,
       comment: form.comment,
       tag: form.tag,
-      id: Date.now().toString()
+      id: Date.now().toString(),
     }
 
     form = Object.assign(form, initialData())
