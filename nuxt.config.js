@@ -1,3 +1,7 @@
+const
+  TerserWebpackPlugin = require('terser-webpack-plugin'),
+  OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+
 module.exports = {
   /*
   ** Headers of the page
@@ -28,14 +32,32 @@ module.exports = {
     ** Run ESLint on save
     */
     extend (config, { isDev, isClient }) {
-      if (isDev && isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
+      const isProd = !isDev;
+
+      if (isClient) {
+        config.optimization.splitChunks.chunks = 'all';
+
+        if (isDev) {
+          config.module.rules.push({
+            enforce: 'pre',
+            test: /\.(js|vue)$/,
+            loader: 'eslint-loader',
+            exclude: /(node_modules)/
+          })
+        }
+
+        if (isProd) {
+          config.optimization.minimize = true;
+          config.optimization.minimizer = [
+            new TerserWebpackPlugin(),
+            new OptimizeCssAssetsWebpackPlugin()
+          ];
+        }
       }
+    },
+    analyze: {
+      analyzerMode: 'static',
+      openAnalyzer: false
     },
     transpile: [
       /typed-vuex/,

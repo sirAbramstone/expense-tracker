@@ -10,7 +10,8 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .ts,.js,.vue .",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "analyze": "nuxt build --analyze"
   },
   "dependencies": {
     "@vue/composition-api": "^0.4.0",
@@ -27,9 +28,11 @@
     "eslint-plugin-vue": "^6.2.1",
     "modern-css-reset": "^1.1.0",
     "node-sass": "^4.13.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "pug": "^2.0.4",
     "pug-loader": "^2.4.0",
     "pug-plain-loader": "^1.0.0",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "terser-webpack-plugin": "^2.3.5"
   }
 }
