@@ -14,9 +14,11 @@
     "analyze": "nuxt build --analyze"
   },
   "dependencies": {
+    "@types/vuelidate": "^0.7.11",
     "@vue/composition-api": "^0.4.0",
     "nuxt": "^2.0.0",
-    "nuxt-typed-vuex": "^0.1.16"
+    "nuxt-typed-vuex": "^0.1.16",
+    "vuelidate": "^0.7.5"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.5.7",

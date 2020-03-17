@@ -18,6 +18,7 @@ module.exports = {
     ]
   },
   css: [
+    '@/assets/main.scss',
     {src: 'modern-css-reset'}
   ],
   /*
@@ -64,5 +65,5 @@ module.exports = {
     ],
   },
   buildModules: ['@nuxt/typescript-build', 'nuxt-typed-vuex'],
-  plugins: ['@/plugins/composition-api']
+  plugins: ['@/plugins/composition-api', '@/plugins/vuelidate']
 }

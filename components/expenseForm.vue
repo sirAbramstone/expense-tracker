@@ -1,36 +1,43 @@
 <template lang="pug">
   form.form(@submit.prevent="submit")
     h1.form__title Мои траты
-    .form__group
-      input.form__field(id="amount" v-model.number="form.amount" type="text" name="amount" placeholder=" ")
-      label.form__label(for="amount") Сумма
+    .form__group(:class="{'form__group_error': $v.form.amount.$error}")
+      input#amount.form__field(v-model.trim.number.lazy="$v.form.amount.$model" type="number" name="amount" placeholder=" ")
+      label.form__label(for="amount") Сумма*
+      .error(v-if="!$v.form.amount.required") Это поле обязательно для заполнения
+      .error(v-if="!$v.form.amount.between")
+        | Должно быть между {{$v.form.amount.$params.between.min}} и {{$v.form.amount.$params.between.max}}
 
-    .form__group
-      input.form__field(id="comment" v-model="form.comment" type="text" name="comment" placeholder=" ")
+    .form__group(:class="{'form__group_error': $v.form.comment.$error}")
+      input#comment.form__field(v-model.trim.lazy="$v.form.comment.$model" type="text" name="comment" placeholder=" ")
       label.form__label(for="comment") Комментарий
+      .error(v-if="!$v.form.comment.maxLength") Введите не более 40 символов
 
-    .form__group
+    .form__group(:class="{'form__group_error': $v.form.tag.$error}")
       fieldset.form__fieldset
-        legend.form__subtitle Категория
+        legend.form__subtitle Категория*
 
         .form__radio-group
-          input.form__radio(id="t1" v-model="form.tag" type="radio" name="tag" value="супермаркеты")
+          input#t1.form__radio(v-model="$v.form.tag.$model" type="radio" name="tag" value="супермаркеты")
           label.form__label(for="t1") Супермаркеты
         .form__radio-group
-          input.form__radio(id="t2" v-model="form.tag" type="radio" name="tag" value="рестораны")
+          input#t2.form__radio(v-model="$v.form.tag.$model" type="radio" name="tag" value="рестораны")
           label.form__label(for="t2") Рестораны
         .form__radio-group
-          input.form__radio(id="t3" v-model="form.tag" type="radio" name="tag" value="развлечения")
+          input#t3.form__radio(v-model="$v.form.tag.$model" type="radio" name="tag" value="развлечения")
           label.form__label(for="t3") Развлечения
         .form__radio-group
-          input.form__radio(id="t4" v-model="form.tag" type="radio" name="tag" value="транспорт")
+          input#t4.form__radio(v-model="$v.form.tag.$model" type="radio" name="tag" value="транспорт")
           label.form__label(for="t4") Транспорт
 
-    button.form__button Создать
+        .error(v-if="!$v.form.tag.required") Выберите категорию
+
+    button.form__button(:disabled="$v.$invalid") Создать
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
+import { required, between, maxLength } from 'vuelidate/lib/validators'
 import { useExpenseForm } from '~/compositions/expenseForm'
 
 export default defineComponent({
@@ -40,6 +47,21 @@ export default defineComponent({
     const { form, submit } = useExpenseForm(props, context)
 
     return { form, submit }
+  },
+
+  validations: {
+    form: {
+      amount: {
+        required,
+        between: between(1, 1000000)
+      },
+      comment: {
+        maxLength: maxLength(40)
+      },
+      tag: {
+        required
+      }
+    }
   }
 })
 </script>
@@ -116,6 +138,11 @@ export default defineComponent({
       &:focus,
       &:hover {
         opacity: 0.7;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: .7;
       }
     }
 
