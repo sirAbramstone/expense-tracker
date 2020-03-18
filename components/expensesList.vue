@@ -5,8 +5,8 @@
         p
           span.name Сумма:
           span.value {{ expense.amount }} руб.
-        p
-          span.value Комментарий:
+        p(v-if="expense.comment")
+          span.name Комментарий:
           span.value {{ expense.comment }}
         p
           span.name Категория:

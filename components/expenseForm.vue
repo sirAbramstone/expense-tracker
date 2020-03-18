@@ -11,7 +11,7 @@
     .form__group(:class="{'form__group_error': $v.form.comment.$error}")
       input#comment.form__field(v-model.trim.lazy="$v.form.comment.$model" type="text" name="comment" placeholder=" ")
       label.form__label(for="comment") Комментарий
-      .error(v-if="!$v.form.comment.maxLength") Введите не более 40 символов
+      .error(v-if="!$v.form.comment.maxLength") Введите не более 20 символов
 
     .form__group(:class="{'form__group_error': $v.form.tag.$error}")
       fieldset.form__fieldset
@@ -56,7 +56,7 @@ export default defineComponent({
         between: between(1, 1000000)
       },
       comment: {
-        maxLength: maxLength(40)
+        maxLength: maxLength(20)
       },
       tag: {
         required
@@ -92,6 +92,12 @@ export default defineComponent({
 
       display: flex;
       flex-direction: column;
+
+      &_error {
+        & input:not([type="radio"]) {
+          border-bottom: 1px solid #F00700;
+        }
+      }
     }
 
     &__field {
