@@ -2,13 +2,13 @@
   .expenses
     ul.expenses__list(v-if="expenses.length")
       li.expenses__list-item(v-for="expense of expenses" :key="expense.id")
-        p
+        p.amount
           span.name Сумма:
           span.value {{ expense.amount }} руб.
-        p(v-if="expense.comment")
+        p.comment(v-if="expense.comment")
           span.name Комментарий:
           span.value {{ expense.comment }}
-        p
+        p.tag
           span.name Категория:
           span.value {{ expense.tag }}
 
