@@ -10,7 +10,7 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import { Expense } from '@/interfaces/Expense'
-const ExpenseItem = () => import('@/components/expenseItemF')
+const ExpenseItem = () => import('@/components/expenseItemF.vue')
 
 export default defineComponent({
   name: 'ExpensesList',

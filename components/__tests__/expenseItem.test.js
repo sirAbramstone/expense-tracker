@@ -1,15 +1,21 @@
 import { shallowMount } from '@vue/test-utils'
 import ExpenseItem from '@/components/expenseItemF'
 
+const factory = (propsData) => {
+  return shallowMount(ExpenseItem, {
+    propsData: {
+      ...propsData
+    }
+  })
+};
+
 describe('ExpenseItem', () => {
   it('should not display comment if expense item dosn`t have it', () => {
-    const wrapper = shallowMount(ExpenseItem, {
-      propsData: {
-        expense: {
-          amount: 1000,
-          tag: 'Супермаркеты',
-          id: '123'
-        }
+    const wrapper = factory({
+      expense: {
+        amount: 1000,
+        tag: 'Супермаркеты',
+        id: '123'
       }
     });
 
@@ -17,14 +23,12 @@ describe('ExpenseItem', () => {
   });
 
   it('should display comment if expense item has it', () => {
-    const wrapper = shallowMount(ExpenseItem, {
-      propsData: {
-        expense: {
-          amount: 1000,
-          tag: 'Супермаркеты',
-          comment: 'I`m here',
-          id: '123'
-        }
+    const wrapper = factory({
+      expense: {
+        amount: 1000,
+        tag: 'Супермаркеты',
+        comment: 'I`m here',
+        id: '123'
       }
     });
 
