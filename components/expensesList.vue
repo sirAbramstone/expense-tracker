@@ -1,26 +1,22 @@
 <template lang="pug">
   .expenses
-    ul.expenses__list(v-if="expenses.length")
-      li.expenses__list-item(v-for="expense of expenses" :key="expense.id")
-        p.amount
-          span.name Сумма:
-          span.value {{ expense.amount }} руб.
-        p.comment(v-if="expense.comment")
-          span.name Комментарий:
-          span.value {{ expense.comment }}
-        p.tag
-          span.name Категория:
-          span.value {{ expense.tag }}
+    .expenses__list(v-if="expenses.length")
+      .expenses__list-item(v-for="expense of expenses" :key="expense.id")
+        expense-item(:expense="expense")
 
     p.notify(v-else) Добавь в меня что-нибудь!
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import { Expense } from '~/interfaces/Expense'
+import { Expense } from '@/interfaces/Expense'
+const ExpenseItem = () => import('@/components/expenseItemF')
 
 export default defineComponent({
   name: 'ExpensesList',
+  components: {
+    ExpenseItem
+  },
   props: {
     expenses: {
       type: Array as () => Expense[],
@@ -47,17 +43,8 @@ export default defineComponent({
     }
 
     &__list-item {
-      padding: 0.5em;
-      border-radius: 10px;
-      background-color: #fff;
-
       &:not(:last-child) {
         margin-bottom: 0.75em;
-      }
-
-      & > p {
-        display: flex;
-        justify-content: space-between;
       }
     }
   }
