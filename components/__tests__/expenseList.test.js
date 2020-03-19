@@ -13,7 +13,7 @@ describe('ExpensesList', () => {
     expect(wrapper.find('.expenses__list').exists()).toBeFalsy();
   });
 
-  it('should display expense item if expenses list contains it', () => {
+  it('should display expenses list if it received expenses prop', () => {
     const wrapper = shallowMount(ExpensesList, {
       propsData: {
         expenses: [{
@@ -24,42 +24,8 @@ describe('ExpensesList', () => {
       }
     });
 
-    const expenseItem = wrapper.find('.expenses__list-item');
-    expect(expenseItem.exists()).toBeTruthy();
-    expect(expenseItem.find('.amount .value').text()).toBe('1000 руб.');
-    expect(expenseItem.find('.tag .value').text()).toBe('Супермаркеты');
-  });
+    expect(wrapper.find('.expenses__list').exists()).toBeTruthy();
+    expect(wrapper.find('.notify').exists()).toBeFalsy();
 
-  it('should not display comment if expense item dosn`t have it', () => {
-    const wrapper = shallowMount(ExpensesList, {
-      propsData: {
-        expenses: [{
-          amount: 1000,
-          tag: 'Супермаркеты',
-          id: '123'
-        }]
-      }
-    });
-
-    const expenseItem = wrapper.find('.expenses__list-item');
-    expect(expenseItem.find('.comment').exists()).toBeFalsy();
-  });
-
-  it('should display comment if expense item has it', () => {
-    const wrapper = shallowMount(ExpensesList, {
-      propsData: {
-        expenses: [{
-          amount: 1000,
-          tag: 'Супермаркеты',
-          comment: 'I`m here',
-          id: '123'
-        }]
-      }
-    });
-
-    const expenseItem = wrapper.find('.expenses__list-item');
-    const comment = expenseItem.find('.comment');
-    expect(comment.exists()).toBeTruthy();
-    expect(comment.find('.value').text()).toBe('I`m here');
   });
 });
