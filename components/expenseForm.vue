@@ -36,241 +36,242 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
-import { required, between, maxLength } from 'vuelidate/lib/validators'
-import { useExpenseForm } from '~/compositions/expenseForm'
+import { defineComponent } from '@vue/composition-api';
+import { required, between, maxLength } from 'vuelidate/lib/validators';
+import { useExpenseForm } from '~/compositions/expenseForm';
 
 export default defineComponent({
   name: 'ExpenseForm',
 
-  setup (props: object, context) {
-    const { form, submit } = useExpenseForm(props, context)
+  setup(props: object, context) {
+    const { form, submit } = useExpenseForm(props, context);
 
-    return { form, submit }
+    return { form, submit };
   },
 
   validations: {
     form: {
       amount: {
         required,
-        between: between(1, 1000000)
+        between: between(1, 1000000),
       },
       comment: {
-        maxLength: maxLength(20)
+        maxLength: maxLength(20),
       },
       tag: {
-        required
-      }
-    }
-  }
-})
+        required,
+      },
+    },
+  },
+});
 </script>
 
 <style lang="scss" scoped>
-  .form {
-    $self: &;
+.form {
+  $self: &;
 
-    width: 320px;
-    padding: 24px 32px;
-    border-radius: 10px;
-    box-shadow: 0 4px 16px #ccc;
-    font-size: 1rem;
+  width: 320px;
+  padding: 24px 32px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px #ccc;
+  font-size: 1rem;
 
-    &__title {
-      margin-bottom: 0.75em;
-      font-size: 1.5em;
-    }
+  &__title {
+    margin-bottom: 0.75em;
+    font-size: 1.5em;
+  }
 
-    &__subtitle {
-      font-size: 1.25em;
-      margin-bottom: 0.75em;
-    }
+  &__subtitle {
+    font-size: 1.25em;
+    margin-bottom: 0.75em;
+  }
 
-    &__group {
-      position: relative;
-      margin-bottom: 2em;
+  &__group {
+    position: relative;
+    margin-bottom: 2em;
 
-      display: flex;
-      flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-      &_error {
-        & input:not([type="radio"]) {
-          border-bottom: 1px solid #F00700;
-        }
-      }
-    }
-
-    &__field {
-      padding: 0 10px 0 0;
-      width: 100%;
-      border: none;
-      border-bottom: 1px solid #e0e0e0;
-      outline: none;
-      background-color: transparent;
-      transition: .3s;
-
-      & ~ #{ $self }__label {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        transition: .3s;
-        will-change: transform;
-        color: #9e9e9e;
-      }
-
-      &:focus {
-        border-bottom: 1px solid #1a73a8;
-      }
-
-      &:focus ~ #{ $self }__label,
-      &:not(:placeholder-shown) ~ #{ $self }__label {
-        transform: translate(calc(100% / 10 * -1), -18px) scale(0.8);
-      }
-    }
-
-    &__button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      color: #fff;
-      background-color: rgb(0, 113, 240);
-      opacity: 1;
-      cursor: pointer;
-      outline: none;
-      transition: opacity .3s;
-      font-size: 1em;
-
-      &:focus,
-      &:hover {
-        opacity: 0.7;
-      }
-
-      &:disabled {
-        cursor: not-allowed;
-        opacity: .7;
-      }
-    }
-
-    &__fieldset {
-      margin: 0;
-      padding: 0;
-      border: none;
-    }
-
-    &__radio-group {
-      text-align: left;
-
-      &:not(:last-child) {
-        margin-bottom: 0.5em;
+    &_error {
+      & input:not([type='radio']) {
+        border-bottom: 1px solid #f00700;
       }
     }
   }
 
-  @supports (-webkit-appearance: none) or (-moz-appearance: none) {
-    input[type='radio'] {
-      --active: #275EFE;
-      --active-inner: #fff;
-      --focus: 2px rgba(39, 94, 254, .3);
-      --border: #BBC1E1;
-      --border-hover: #275EFE;
-      --background: #fff;
-      --disabled: #F6F8FF;
-      --disabled-inner: #E1E6F9;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      height: 21px;
-      outline: none;
-      display: inline-block;
-      vertical-align: top;
-      position: relative;
-      margin: 0;
-      cursor: pointer;
-      border: 1px solid var(--bc, var(--border));
-      background: var(--b, var(--background));
-      transition: background .3s, border-color .3s, box-shadow .2s;
+  &__field {
+    padding: 0 10px 0 0;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    outline: none;
+    background-color: transparent;
+    transition: 0.3s;
 
-      &:after {
-        content: '';
-        display: block;
-        left: 0;
-        top: 0;
-        position: absolute;
-        transition: transform var(--d-t, .3s) var(--d-t-e, ease), opacity var(--d-o, .2s);
-      }
+    & ~ #{ $self }__label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      transition: 0.3s;
+      will-change: transform;
+      color: #9e9e9e;
+    }
+
+    &:focus {
+      border-bottom: 1px solid #1a73a8;
+    }
+
+    &:focus ~ #{ $self }__label,
+    &:not(:placeholder-shown) ~ #{ $self }__label {
+      transform: translate(calc(100% / 10 * -1), -18px) scale(0.8);
+    }
+  }
+
+  &__button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: rgb(0, 113, 240);
+    opacity: 1;
+    cursor: pointer;
+    outline: none;
+    transition: opacity 0.3s;
+    font-size: 1em;
+
+    &:focus,
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+  }
+
+  &__fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  &__radio-group {
+    text-align: left;
+
+    &:not(:last-child) {
+      margin-bottom: 0.5em;
+    }
+  }
+}
+
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+  input[type='radio'] {
+    --active: #275efe;
+    --active-inner: #fff;
+    --focus: 2px rgba(39, 94, 254, 0.3);
+    --border: #bbc1e1;
+    --border-hover: #275efe;
+    --background: #fff;
+    --disabled: #f6f8ff;
+    --disabled-inner: #e1e6f9;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 21px;
+    outline: none;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid var(--bc, var(--border));
+    background: var(--b, var(--background));
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+
+    &:after {
+      content: '';
+      display: block;
+      left: 0;
+      top: 0;
+      position: absolute;
+      transition: transform var(--d-t, 0.3s) var(--d-t-e, ease),
+        opacity var(--d-o, 0.2s);
+    }
+
+    &:checked {
+      --b: var(--active);
+      --bc: var(--active);
+      --d-o: 0.3s;
+      --d-t: 0.6s;
+      --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+    }
+
+    &:disabled {
+      --b: var(--disabled);
+      cursor: not-allowed;
+      opacity: 0.9;
 
       &:checked {
-        --b: var(--active);
-        --bc: var(--active);
-        --d-o: .3s;
-        --d-t: .6s;
-        --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
-      }
-
-      &:disabled {
-        --b: var(--disabled);
-        cursor: not-allowed;
-        opacity: .9;
-
-        &:checked {
-          --b: var(--disabled-inner);
-          --bc: var(--border);
-        }
-
-        & + label {
-          cursor: not-allowed;
-        }
-      }
-
-      &:hover {
-        &:not(:checked) {
-          &:not(:disabled) {
-            --bc: var(--border-hover);
-          }
-        }
-      }
-
-      &:focus {
-        box-shadow: 0 0 0 var(--focus);
-      }
-
-      &:not(.switch) {
-        width: 21px;
-
-        &:after {
-          opacity: var(--o, 0);
-        }
-
-        &:checked {
-          --o: 1;
-        }
+        --b: var(--disabled-inner);
+        --bc: var(--border);
       }
 
       & + label {
-        font-size: 0.9em;
-        line-height: 21px;
-        display: inline-block;
-        vertical-align: top;
-        cursor: pointer;
-        margin-left: 4px;
+        cursor: not-allowed;
       }
     }
 
-    input[type='radio'] {
-      border-radius: 50%;
+    &:hover {
+      &:not(:checked) {
+        &:not(:disabled) {
+          --bc: var(--border-hover);
+        }
+      }
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 var(--focus);
+    }
+
+    &:not(.switch) {
+      width: 21px;
 
       &:after {
-        width: 19px;
-        height: 19px;
-        border-radius: 50%;
-        background: var(--active-inner);
-        opacity: 0;
-        transform: scale(var(--s, .7));
+        opacity: var(--o, 0);
       }
 
       &:checked {
-        --s: .5;
+        --o: 1;
       }
     }
+
+    & + label {
+      font-size: 0.9em;
+      line-height: 21px;
+      display: inline-block;
+      vertical-align: top;
+      cursor: pointer;
+      margin-left: 4px;
+    }
   }
+
+  input[type='radio'] {
+    border-radius: 50%;
+
+    &:after {
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background: var(--active-inner);
+      opacity: 0;
+      transform: scale(var(--s, 0.7));
+    }
+
+    &:checked {
+      --s: 0.5;
+    }
+  }
+}
 </style>

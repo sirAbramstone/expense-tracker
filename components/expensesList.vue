@@ -8,48 +8,48 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
-import { Expense } from '@/interfaces/Expense'
-const ExpenseItem = () => import('@/components/expenseItemF.vue')
+import { defineComponent } from '@vue/composition-api';
+import { Expense } from '@/interfaces/Expense';
+const ExpenseItem = () => import('@/components/expenseItemF.vue');
 
 export default defineComponent({
   name: 'ExpensesList',
   components: {
-    ExpenseItem
+    ExpenseItem,
   },
   props: {
     expenses: {
       type: Array as () => Expense[],
-      required: true
-    }
-  }
-})
+      required: true,
+    },
+  },
+});
 </script>
 
 <style lang="scss" scoped>
-  .expenses {
-    display: flex;
-    justify-content: center;
-    min-width: 360px;
-    min-height: 457px;
-    padding: 1.5em;
-    border-radius: 10px;
-    box-shadow: 0 4px 16px #ccc;
-    font-size: 1rem;
-    background-color: #BFDCFB;
+.expenses {
+  display: flex;
+  justify-content: center;
+  min-width: 360px;
+  min-height: 457px;
+  padding: 1.5em;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px #ccc;
+  font-size: 1rem;
+  background-color: #bfdcfb;
 
-    &__list {
-      width: 100%;
-    }
-
-    &__list-item {
-      &:not(:last-child) {
-        margin-bottom: 0.75em;
-      }
-    }
+  &__list {
+    width: 100%;
   }
 
-  .notify {
-    align-self: center;
+  &__list-item {
+    &:not(:last-child) {
+      margin-bottom: 0.75em;
+    }
   }
+}
+
+.notify {
+  align-self: center;
+}
 </style>

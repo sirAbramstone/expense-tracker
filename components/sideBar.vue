@@ -4,16 +4,16 @@
 
 <script lang="ts">
 export default {
-  name: 'SideBar'
-}
+  name: 'SideBar',
+};
 </script>
 
 <style scoped>
-  .aside {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
+.aside {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 </style>

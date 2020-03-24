@@ -41,7 +41,7 @@ module.exports = {
         if (isDev) {
           config.module.rules.push({
             enforce: 'pre',
-            test: /\.(js|vue)$/,
+            test: /\.(js|vue|ts)$/,
             loader: 'eslint-loader',
             exclude: /(node_modules)/
           })
@@ -64,6 +64,9 @@ module.exports = {
       /typed-vuex/,
     ],
   },
+  extends: [
+    '@nuxtjs/eslint-config-typescript'
+  ],
   buildModules: ['@nuxt/typescript-build', 'nuxt-typed-vuex'],
   plugins: ['@/plugins/composition-api', '@/plugins/vuelidate']
 }

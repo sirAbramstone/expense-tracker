@@ -12,30 +12,29 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
-import { Expense } from '@/interfaces/Expense'
+import { defineComponent } from '@vue/composition-api';
+import { Expense } from '@/interfaces/Expense';
 
 export default defineComponent({
   name: 'ExpenseItemF',
   props: {
     expense: {
       type: Object as () => Expense,
-      required: true
-    }
-  }
-})
+      required: true,
+    },
+  },
+});
 </script>
 
 <style lang="scss" scoped>
-  .expense-item {
-    padding: 0.5em;
-    border-radius: 10px;
-    background-color: #fff;
+.expense-item {
+  padding: 0.5em;
+  border-radius: 10px;
+  background-color: #fff;
 
-    & > p {
-      display: flex;
-      justify-content: space-between;
-    }
+  & > p {
+    display: flex;
+    justify-content: space-between;
   }
-
+}
 </style>

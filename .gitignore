@@ -11,7 +11,7 @@ npm-debug.log
 dist
 
 # idea
-.idea
+/.idea
 
 # tests coverage
 coverage

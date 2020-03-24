@@ -1,14 +1,14 @@
-import { reactive, SetupContext } from '@vue/composition-api'
-import { Expense } from '~/interfaces/Expense'
+import { reactive, SetupContext } from '@vue/composition-api';
+import { Expense } from '~/interfaces/Expense';
 
 const initialData = (): Expense => ({
   amount: 0,
   comment: '',
   tag: '',
-})
+});
 
-export function useExpenseForm (props: object, { emit }: SetupContext) {
-  let form: Expense = reactive(initialData())
+export function useExpenseForm(props: object, { emit }: SetupContext) {
+  let form: Expense = reactive(initialData());
 
   const submit = () => {
     const expense: Expense = {
@@ -16,12 +16,12 @@ export function useExpenseForm (props: object, { emit }: SetupContext) {
       comment: form.comment,
       tag: form.tag,
       id: Date.now().toString(),
-    }
+    };
 
-    form = Object.assign(form, initialData())
+    form = Object.assign(form, initialData());
 
-    emit('add', expense)
-  }
+    emit('add', expense);
+  };
 
-  return { form, submit }
+  return { form, submit };
 }
