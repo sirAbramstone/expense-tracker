@@ -7,7 +7,7 @@ const initialData = (): Expense => ({
   tag: '',
 });
 
-export function useExpenseForm(props: object, { emit }: SetupContext) {
+export default function useExpenseForm(props: object, { emit }: SetupContext) {
   let form: Expense = reactive(initialData());
 
   const submit = () => {

@@ -2,14 +2,14 @@
   form.form(@submit.prevent="submit")
     h1.form__title Мои траты
     .form__group(:class="{'form__group_error': $v.form.amount.$error}")
-      input#amount.form__field(v-model.trim.number.lazy="$v.form.amount.$model" type="number" name="amount" placeholder=" ")
+      input#amount.form__field(v-model.trim.number.lazy="$v.form.amount.$model" type="number" name="amount" placeholder=" " data-amount)
       label.form__label(for="amount") Сумма*
       .error(v-if="!$v.form.amount.required") Это поле обязательно для заполнения
       .error(v-if="!$v.form.amount.between")
         | Должно быть между {{$v.form.amount.$params.between.min}} и {{$v.form.amount.$params.between.max}}
 
     .form__group(:class="{'form__group_error': $v.form.comment.$error}")
-      input#comment.form__field(v-model.trim.lazy="$v.form.comment.$model" type="text" name="comment" placeholder=" ")
+      input#comment.form__field(v-model.trim.lazy="$v.form.comment.$model" type="text" name="comment" placeholder=" " data-comment)
       label.form__label(for="comment") Комментарий
       .error(v-if="!$v.form.comment.maxLength") Введите не более 20 символов
 
@@ -38,7 +38,7 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
 import { required, between, maxLength } from 'vuelidate/lib/validators';
-import { useExpenseForm } from '~/compositions/expenseForm';
+import useExpenseForm from '@/compositions/useExpenseForm';
 
 export default defineComponent({
   name: 'ExpenseForm',
