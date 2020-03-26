@@ -1,24 +1,39 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
+import merge from 'lodash.merge';
 import ExpenseForm from '@/components/expenseForm';
-import VueCompositionApi from '@vue/composition-api';
+import CompositionApi from '@vue/composition-api';
 import Vuelidate from 'vuelidate';
-import useExpenseForm from '@/compositions/useExpenseForm';
 
 const localVue = createLocalVue();
-localVue.use(VueCompositionApi);
+localVue.use(CompositionApi);
 localVue.use(Vuelidate);
 
-describe('ExpenseForm', () => {
-  it('should create event after submit form', function() {
-    const wrapper = shallowMount(ExpenseForm, {
-      localVue
-    });
+function createWrapper(overrides) {
+  const defaultMountingOptions = {
+    localVue
+  };
+  return shallowMount(ExpenseForm, merge(defaultMountingOptions, overrides));
+}
 
-    wrapper.find('[data-amount]').setValue(1000);
-    wrapper.find('[data-comment]').setValue('hi');
-    wrapper.find('#t1').setChecked(true);
+describe('ExpenseForm', () => {
+  let wrapper;
+  const dataWithoutId = ({ id, ...data }) => data;
+
+  beforeEach(() => {
+    wrapper = createWrapper();
+  });
+
+  it('should after the user submit button $v.$invalid return true', () => {
+    wrapper.find('button').trigger('submit');
+
+    expect(wrapper.vm.$v.$invalid).toBeTruthy();
+  });
+
+  it('should create event after the user submit button', async () => {
+    wrapper.setData({ form: { amount: 1000, comment: 'hi', tag: 'супермаркеты' } });
 
     wrapper.vm.submit();
-    console.log(wrapper.emitted());
+    expect(dataWithoutId(wrapper.emitted().add[0][0]))
+      .toEqual({ amount: 1000, comment: 'hi', tag: 'супермаркеты' });
   });
 });

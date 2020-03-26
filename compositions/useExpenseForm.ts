@@ -5,6 +5,7 @@ const initialData = (): Expense => ({
   amount: 0,
   comment: '',
   tag: '',
+  id: ''
 });
 
 export default function useExpenseForm(props: object, { emit }: SetupContext) {

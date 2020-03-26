@@ -1,6 +1,6 @@
 module.exports = {
   // tell Jest to handle `*.vue` files
-  moduleFileExtensions: ["js", "json", "vue"],
+  moduleFileExtensions: ["js", "ts", "json", "vue"],
   watchman: false,
   moduleNameMapper: {
     "^~/(.*)$": "<rootDir>/$1",
@@ -10,6 +10,8 @@ module.exports = {
   transform: {
     // process js with `babel-jest`
     "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+    // process ts with `ts-jest`
+    "^.+\\.ts": "<rootDir>/node_modules/ts-jest",
     // process `*.vue` files with `vue-jest`
     ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
   },

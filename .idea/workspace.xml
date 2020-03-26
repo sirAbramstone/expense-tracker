@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12f0cae2-562b-4893-a580-f6fdf1039198" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/components/__tests__/expenseForm.spec.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/__tests__/expenseItem.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/__tests__/expenseItem.spec.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/__tests__/expenseList.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/__tests__/expenseList.spec.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/expenseForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/expenseForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/sideBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/__sideBar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compositions/expenseForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/compositions/useExpenseForm.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/default.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/__tests__/expenseForm.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/__tests__/expenseForm.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compositions/useExpenseForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/compositions/useExpenseForm.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +166,7 @@
       <workItem from="1584373396973" duration="14356000" />
       <workItem from="1584607408907" duration="10539000" />
       <workItem from="1584701833749" duration="1216000" />
-      <workItem from="1584969238364" duration="10274000" />
+      <workItem from="1584969238364" duration="20260000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add sideBar component">
       <created>1582126436800</created>
@@ -254,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585045109840</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="feat: add test to expenseForm">
+      <created>1585056894577</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1585056894577</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,33 +306,34 @@
     <MESSAGE value="feat: move two tests from expensesList to expenseItem" />
     <MESSAGE value="feat: refactor tests for expenseItem and expensesList" />
     <MESSAGE value="feat: configure eslint and prettier" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: configure eslint and prettier" />
+    <MESSAGE value="feat: add test to expenseForm" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add test to expenseForm" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2" timestamp="1585045109589">
+    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2" timestamp="1585056894268">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1585045109589" />
+    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1585056894268" />
     <state x="735" y="314" key="FileChooserDialogImpl" timestamp="1584972288496">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="735" y="314" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1584972288496" />
-    <state width="1895" height="415" key="GridCell.Tab.0.bottom" timestamp="1585056840336">
+    <state width="1895" height="210" key="GridCell.Tab.0.bottom" timestamp="1585218362641">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1895" height="415" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585056840336" />
-    <state width="1895" height="415" key="GridCell.Tab.0.center" timestamp="1585056840335">
+    <state width="1895" height="210" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585218362641" />
+    <state width="1895" height="210" key="GridCell.Tab.0.center" timestamp="1585218362640">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1895" height="415" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585056840334" />
-    <state width="1895" height="415" key="GridCell.Tab.0.left" timestamp="1585056840333">
+    <state width="1895" height="210" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585218362640" />
+    <state width="1895" height="210" key="GridCell.Tab.0.left" timestamp="1585218362639">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1895" height="415" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585056840333" />
-    <state width="1895" height="415" key="GridCell.Tab.0.right" timestamp="1585056840335">
+    <state width="1895" height="210" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585218362639" />
+    <state width="1895" height="210" key="GridCell.Tab.0.right" timestamp="1585218362640">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1895" height="415" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585056840335" />
+    <state width="1895" height="210" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585218362640" />
     <state x="700" y="180" width="509" height="753" key="RollbackChangesDialog" timestamp="1585044560100">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -336,10 +342,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="434" y="188" width="1359" height="737" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1585044975280" />
-    <state x="555" y="285" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1585045020169">
+    <state x="555" y="285" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1585056897162">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="555" y="285" width="800" height="543" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1585045020169" />
+    <state x="555" y="285" width="800" height="543" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1585056897162" />
     <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1585044620218">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
