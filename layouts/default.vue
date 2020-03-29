@@ -1,15 +1,20 @@
 <template lang="pug">
-  .grid
+  .app-main-layout
+    nav-bar
     side-bar
-    nuxt
+    main.app-content
+      .app-page
+        nuxt
 </template>
 
 <script lang="ts">
-import SideBar from '~/components/__sideBar.vue';
+import SideBar from '~/components/sideBar.vue';
+import NavBar from '~/components/navBar.vue';
 
 export default {
   components: {
     SideBar,
+    NavBar,
   },
 };
 </script>

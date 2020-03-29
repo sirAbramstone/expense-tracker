@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import ExpenseItem from '@/components/expenseItemF'
+import ExpenseItem from '~/components/expenseItemF'
 
 const factory = (propsData) => {
   return shallowMount(ExpenseItem, {

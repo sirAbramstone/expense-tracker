@@ -10,8 +10,11 @@ npm-debug.log
 # Nuxt generate
 dist
 
-# idea
-/.idea
-
 # tests coverage
 coverage
+
+#html templates
+templates
+
+# idea
+/.idea/

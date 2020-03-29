@@ -1,6 +1,6 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import merge from 'lodash.merge';
-import ExpenseForm from '@/components/expenseForm';
+import ExpenseForm from '~/components/expenseForm';
 import CompositionApi from '@vue/composition-api';
 import Vuelidate from 'vuelidate';
 
@@ -35,5 +35,12 @@ describe('ExpenseForm', () => {
     wrapper.vm.submit();
     expect(dataWithoutId(wrapper.emitted().add[0][0]))
       .toEqual({ amount: 1000, comment: 'hi', tag: 'супермаркеты' });
+  });
+
+  it('should have initial data after the user submit button', async () => {
+    wrapper.setData({ form: { amount: 1000, comment: 'hi', tag: 'супермаркеты' } });
+
+    wrapper.vm.submit();
+    expect(wrapper.vm.$data.form).toEqual({ amount: 0, comment: '', tag: '' });
   });
 });

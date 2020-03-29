@@ -13,13 +13,19 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Nuxt.js project' }
     ],
+    script: [
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js', body: true }
+    ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css' },
+      { rel:'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
     ]
   },
   css: [
     '@/assets/main.scss',
-    {src: 'modern-css-reset'}
+    '@/assets/index.css',
+    { src: 'modern-css-reset' },
   ],
   /*
   ** Customize the progress bar color
@@ -32,7 +38,7 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    extend (config, { isDev, isClient }) {
+    extend(config, { isDev, isClient }) {
       const isProd = !isDev;
 
       if (isClient) {
@@ -44,7 +50,7 @@ module.exports = {
             test: /\.(js|vue|ts)$/,
             loader: 'eslint-loader',
             exclude: /(node_modules)/
-          })
+          });
         }
 
         if (isProd) {
@@ -61,12 +67,12 @@ module.exports = {
       openAnalyzer: false
     },
     transpile: [
-      /typed-vuex/,
-    ],
+      /typed-vuex/
+    ]
   },
   extends: [
     '@nuxtjs/eslint-config-typescript'
   ],
   buildModules: ['@nuxt/typescript-build', 'nuxt-typed-vuex'],
   plugins: ['@/plugins/composition-api', '@/plugins/vuelidate']
-}
+};

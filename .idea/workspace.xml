@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="12f0cae2-562b-4893-a580-f6fdf1039198" name="Default Changelist" comment="">
+    <list default="true" id="12f0cae2-562b-4893-a580-f6fdf1039198" name="Default Changelist" comment="feat: write test case for expenseForm">
+      <change afterPath="$PROJECT_DIR$/components/navBar.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/layouts/auth.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/bill.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/categories.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/detailRecord.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/history.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/login.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/planning.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/profile.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/record.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/register.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/__tests__/expenseForm.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/__tests__/expenseForm.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/__sideBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/sideBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/__tests__/expenseForm.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/components/expenseForm.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/__tests__/expenseItem.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/components/expenseItem.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/__tests__/expenseList.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/components/expenseList.spec.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compositions/useExpenseForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/compositions/useExpenseForm.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jest.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/default.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuxt.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/nuxt.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +34,8 @@
         <option value="CSS File" />
         <option value="HTML File" />
         <option value="TypeScript File" />
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -56,6 +70,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -80,12 +95,14 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/components" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/pages" />
       <recent name="$PROJECT_DIR$/pages/index" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/__tests__/components" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/components" />
     </key>
   </component>
   <component name="RunManager" selected="npm.dev">
@@ -141,8 +158,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.test:unit" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.test:unit" />
         <item itemvalue="npm.prettier" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.lint" />
@@ -166,7 +183,7 @@
       <workItem from="1584373396973" duration="14356000" />
       <workItem from="1584607408907" duration="10539000" />
       <workItem from="1584701833749" duration="1216000" />
-      <workItem from="1584969238364" duration="20260000" />
+      <workItem from="1584969238364" duration="40106000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add sideBar component">
       <created>1582126436800</created>
@@ -259,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585056894577</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="feat: write test case for expenseForm">
+      <created>1585218429141</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1585218429141</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,48 +331,61 @@
     <MESSAGE value="feat: refactor tests for expenseItem and expensesList" />
     <MESSAGE value="feat: configure eslint and prettier" />
     <MESSAGE value="feat: add test to expenseForm" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add test to expenseForm" />
+    <MESSAGE value="feat: write test case for expenseForm" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: write test case for expenseForm" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2" timestamp="1585056894268">
+    <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1585416088623">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1585056894268" />
+    <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1585416088623" />
+    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2" timestamp="1585226008910">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1585226008910" />
     <state x="735" y="314" key="FileChooserDialogImpl" timestamp="1584972288496">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="735" y="314" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1584972288496" />
-    <state width="1895" height="210" key="GridCell.Tab.0.bottom" timestamp="1585218362641">
+    <state width="1895" height="377" key="GridCell.Tab.0.bottom" timestamp="1585412736969">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1895" height="210" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585218362641" />
-    <state width="1895" height="210" key="GridCell.Tab.0.center" timestamp="1585218362640">
+    <state width="1895" height="377" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585412736968" />
+    <state width="1895" height="377" key="GridCell.Tab.0.center" timestamp="1585412736966">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1895" height="210" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585218362640" />
-    <state width="1895" height="210" key="GridCell.Tab.0.left" timestamp="1585218362639">
+    <state width="1895" height="377" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585412736966" />
+    <state width="1895" height="377" key="GridCell.Tab.0.left" timestamp="1585412736965">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1895" height="210" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585218362639" />
-    <state width="1895" height="210" key="GridCell.Tab.0.right" timestamp="1585218362640">
+    <state width="1895" height="377" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585412736965" />
+    <state width="1895" height="377" key="GridCell.Tab.0.right" timestamp="1585412736968">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1895" height="210" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585218362640" />
-    <state x="700" y="180" width="509" height="753" key="RollbackChangesDialog" timestamp="1585044560100">
+    <state width="1895" height="377" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585412736968" />
+    <state x="700" y="180" width="509" height="753" key="RollbackChangesDialog" timestamp="1585225578453">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="700" y="180" width="509" height="753" key="RollbackChangesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585044560100" />
-    <state x="434" y="188" width="1359" height="737" key="SettingsEditor" timestamp="1585044975280">
+    <state x="700" y="180" width="509" height="753" key="RollbackChangesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585225578453" />
+    <state x="434" y="188" width="1359" height="737" key="SettingsEditor" timestamp="1585225573752">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="434" y="188" width="1359" height="737" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1585044975280" />
+    <state x="434" y="188" width="1359" height="737" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1585225573752" />
     <state x="555" y="285" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1585056897162">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="555" y="285" width="800" height="543" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1585056897162" />
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1585044620218">
+    <state x="483" y="154" width="944" height="805" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1585479319853">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1585044620218" />
+    <state x="483" y="154" width="944" height="805" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1585479319853" />
+    <state x="624" y="252" key="run.anything.popup" timestamp="1585480365724">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="624" y="252" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1585480365724" />
+    <state x="623" y="259" width="674" height="678" key="search.everywhere.popup" timestamp="1585480523443">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="623" y="259" width="674" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1585480523443" />
   </component>
 </project>
