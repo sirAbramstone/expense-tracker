@@ -11,3 +11,9 @@ insert_final_newline = true
 
 [*.md]
 trim_trailing_whitespace = false
+
+[*.ts]
+ij_typescript_enforce_trailing_comma = whenmultiline
+
+[*.js]
+ij_javascript_enforce_trailing_comma = whenmultiline

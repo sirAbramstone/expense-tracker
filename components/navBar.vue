@@ -1,32 +1,45 @@
 <template lang="pug">
-  nav.navbar.orange.lighten-1
-    .nav-wrapper
-      .navbar-left
-        a(href="#")
-          i.material-icons.black-text dehaze
+  md-toolbar
+    .md-toolbar-row
+      .md-toolbar-section-start
+        md-button.md-icon-button(href="#" @click.prevent="$emit('click')")
+          md-icon menu
         span.black-text 12.12.12
 
-      ul.right.hide-on-small-and-down
-        li
-          a.dropdown-trigger.black-text(href="#" data-target="dropdown") USER NAME
-            i.material-icons.right arrow_drop_down
+      .md-toolbar-section-end
+        md-menu(md-size="medium" md-align-trigger)
+          md-button(md-menu-trigger) USER NAME
+            md-icon arrow_drop_down
 
-          ul#dropdown.dropdown-content
-            li
+          md-menu-content
+            md-menu-item
               a.black-text(href="#")
-                i.material-icons account_circle
+                md-icon account_circle
                 | Профиль
-            li.divider(tabindex="-1")
-            li
+            md-divider
+            md-menu-item
               a.black-text(href="#")
-                i.material-icons assignment_return
+                md-icon assignment_return
                 | Выйти
 </template>
 
 <script>
-export default {
+import { defineComponent, onMounted } from '@vue/composition-api';
+
+export default defineComponent({
   name: 'NavBar',
-};
+  setup() {
+    onMounted(() => {
+      // console.log(Materialize);
+    });
+  },
+});
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+@import '~vue-material/dist/theme/engine';
+
+.md-toolbar {
+  background-color: md-get-palette-color(orange, 500);
+}
+</style>

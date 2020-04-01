@@ -1,22 +1,34 @@
 <template lang="pug">
   .app-main-layout
-    nav-bar
-    side-bar
-    main.app-content
+    nav-bar(@click="isOpen = !isOpen")
+    side-bar(v-model="isOpen")
+    main.app-content(:class="{full: !isOpen}")
       .app-page
         nuxt
+
+    .fixed-action-btn
+      router-link.btn-floating.btn-large.blue(to="/record")
+        i.large.material-icons add
 </template>
 
 <script lang="ts">
+import { defineComponent } from '@vue/composition-api';
 import SideBar from '~/components/sideBar.vue';
 import NavBar from '~/components/navBar.vue';
 
-export default {
+interface DefaultLayoutData {
+  isOpen: boolean;
+}
+
+export default defineComponent({
   components: {
     SideBar,
     NavBar,
   },
-};
+  data: (): DefaultLayoutData => ({
+    isOpen: true,
+  }),
+});
 </script>
 
 <style>
