@@ -7,26 +7,26 @@
       canvas
 
     section
-      table
-        thead
-          tr
-            th #
-            th Сумма
-            th Дата
-            th Категория
-            th Тип
-            th Открыть
-        tbody
-          tr
-            td 1
-            td 1212
-            td 12.12.32
-            td name
-            td
-              span.white-text.badge.red Расход
-            td
-              button.btn-small.btn
-                i.material-icons open_in_new
+      md-card
+        md-card-content
+          md-table
+            md-table-row
+              md-table-head(md-numeric) #
+              md-table-head Сумма
+              md-table-head Дата
+              md-table-head Категория
+              md-table-head Тип
+              md-table-head Открыть
+            md-table-row
+              md-table-cell(md-numeric) 1
+              md-table-cell 1212
+              md-table-cell 12.12.32
+              md-table-cell name
+              md-table-cell
+                md-badge.md-square(md-content="Расход")
+              md-table-cell
+                md-button.md-dense
+                  md-icon open_in_new
 </template>
 
 <script>

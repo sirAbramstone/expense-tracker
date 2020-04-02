@@ -3,47 +3,47 @@
     .page-title
       h3 Категории
     section
-      .row
-        .col.s12.m6
+      .md-layout.md-gutter
+        .md-layout-item.md-small-size-100
           .page-subtitle
             h4 Создать
 
           form
-            .input-field
-              input#name(type="text")
+            md-field
+              md-input#name(type="text")
               label(for="name") Название
-              span.helper-text.invalid Введите название
+              span.helper-text.md-error Введите название
 
-            .input-field
-              input#limit(type="number")
+            md-field
+              md-input#limit(type="number")
               label(for="limit") Лимит
-              span.helper-text.invalid Минимальная величина
+              span.helper-text.md-error Минимальная величина
 
-            button.btn.waves-effect.waves-light Создать
-              i.material-icons.right send
+            md-button.md-raised.md-primary Создать
+              md-icon send
 
-        .col.s12.m6
+        .md-layout-item.md-small-size-100
           .page-subtitle
             h4 Редактировать
 
           form
-            .input-field
-              select#category
-                option Category
+            md-field
+              md-select#category
+                md-option Category
               label(for="category") Выберите категорию
 
-            .input-field
-              input#title(type="text")
+            md-field
+              md-input#title(type="text")
               label(for="title") Название
-              span.helper-text.invalid Введите название
+              span.helper-text.md-error Введите название
 
-            .input-field
-              input#limit2(type="number")
+            md-field
+              md-input#limit2(type="number")
               label(for="limit2") Лимит
-              span.helper-text.invalid Минимальная величина
+              span.helper-text.md-error Минимальная величина
 
-            button.btn.waves-effect.waves-light Обновить
-              i.material-icons.right send
+            md-button.md-raised.md-primary Обновить
+              md-icon send
 </template>
 
 <script>

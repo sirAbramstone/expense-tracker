@@ -2,34 +2,35 @@
   div
     .page-title
       h3 Счет
-      button.btn.waves-effect.waves-light.btn-small
-        i.material-icons refresh
+      md-button.md-icon-button.md-primary
+        md-icon refresh
 
-    .row
-      .col.s12.m6.l4
-        .card.light-blue.bill-card
-          .card-content.white-text
-            span.card-title Счет в валюте
-            p.currency-line
-              span 12.0 Р
-      .col.s12.m6.l8
-        .card.orange.darken-3.bill-card
-          .card-content.white-text
-            .card-header
-              span.card-title Курс валют
+    .md-layout
+      .md-layout-item.md-large-size-33.md-small-size-100
+        md-card.bill-card(md-with-hover)
+          md-ripple
+            md-card-header
+              span.md-title Счет в валюте
+            md-card-content
+              p.currency-line
+                span 12.0 Р
+      .md-layout-item.md-large-size-66.md-small-size-100
+        md-card.bill-card(md-with-hover)
+          md-ripple
+            md-card-header
+              span.md-title Курс валют
 
-            table
-              thead
-                tr
-                  th Валюта
-                  th Курс
-                  th Дата
+            md-card-content
+              md-table
+                md-table-row
+                  md-table-head Валюта
+                  md-table-head Курс
+                  md-table-head Дата
 
-              tbody
-                tr
-                  td руб
-                  td 12121
-                  td 12.12.12
+                md-table-row
+                  md-table-cell руб
+                  md-table-cell 12121
+                  md-table-cell 12.12.12
 </template>
 
 <script>

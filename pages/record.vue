@@ -3,44 +3,37 @@
     .page-title
       h3 Новая запись
 
-    form.form
-      .input-field
-        select
-          option(name="cat")
-        label Выберите категорию
+    form.md-layout(novalidate)
+      md-field
+        md-select#category(md-dense)
+          md-option(value="cat") Cat
+        label(for="category") Выберите категорию
 
-      p
-        label
-          input.with-gap(name="type" type="radio" value="income")
-          span Доход
+      label
+        md-radio(name="type" value="income")
+        span Доход
 
-      p
-        label
-          input.with-gap(name="type" type="radio" value="outcome")
-          span Расход
+      label
+        md-radio(name="type" value="outcome")
+        span Расход
 
-    .input-field
-      input#amount(type="number")
+    md-field
+      md-input#amount(name="amount" type="number")
       label(for="amount") Сумма
-      span.helper-text.invalid amount
-    .input-field
-      input#description(type="text")
-      label(for="description") Описание
-      span.helper-text.invalid description
+      span.helper-text.md-error amount
 
-    button.btn.waves-effect.waves-light Создать
-      i.material-icons.right send
+    md-field
+      md-input#description(type="text")
+      label(for="description") Описание
+      span.helper-text.md-error description
+
+    md-button.md-raised.md-primary Создать
+      md-icon send
 </template>
 
 <script>
 export default {
   name: 'Record',
-  // created() {
-  //   if (process.client) {
-  //     const selects = document.querySelectorAll('select');
-  //     const instances = window.M.FormSelect.init(selects);
-  //   }
-  // },
 };
 </script>
 

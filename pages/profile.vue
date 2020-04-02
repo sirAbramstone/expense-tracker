@@ -4,13 +4,13 @@
       h3 Профиль
 
     form.form
-      .input-field
-        input#description(type="text")
+      md-field
+        md-input#description(type="text")
         label(for="description") Имя
-        span.helper-text.invalid name
+        span.helper-text.md-error name
 
-      button.btn.waves-effect.waves-light Обновить
-        i.material-icons.right send
+      md-button.md-raised Обновить
+        md-icon send
 </template>
 
 <script>

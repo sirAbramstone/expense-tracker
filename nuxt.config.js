@@ -22,8 +22,8 @@ module.exports = {
     '@/assets/main.scss',
     '@/assets/index.css',
     { src: 'modern-css-reset' },
-    { src: 'vue-material/dist/vue-material.min.css', lang: 'css'  },
-    { src: 'vue-material/dist/theme/default.css', lang: 'css'  },
+    { src: 'vue-material/dist/vue-material.min.css', lang: 'css' },
+    { src: 'vue-material/dist/theme/default.css', lang: 'css' },
   ],
   /*
   ** Customize the progress bar color
@@ -72,5 +72,10 @@ module.exports = {
     '@nuxtjs/eslint-config-typescript',
   ],
   buildModules: ['@nuxt/typescript-build', 'nuxt-typed-vuex'],
-  plugins: ['@/plugins/composition-api', '@/plugins/vuelidate', '@/plugins/vue-material'],
+  plugins: [
+    '@/plugins/composition-api',
+    '@/plugins/vuelidate',
+    '@/plugins/vue-material',
+    '~plugins/filters.js',
+  ],
 };

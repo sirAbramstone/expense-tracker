@@ -1,14 +1,13 @@
 <template lang="pug">
-  .app-main-layout
-    nav-bar(@click="isOpen = !isOpen")
-    side-bar(v-model="isOpen")
-    main.app-content(:class="{full: !isOpen}")
-      .app-page
+  .page-container
+    md-app
+      nav-bar(@click="isOpen = !isOpen" @exit="logOut" v-model="isOpen" slot="md-app-toolbar")
+      side-bar(@click="isOpen = !isOpen" v-model="isOpen" slot="md-app-drawer")
+      md-app-content
         nuxt
 
-    .fixed-action-btn
-      router-link.btn-floating.btn-large.blue(to="/record")
-        i.large.material-icons add
+    md-button.md-fab.md-primary.md-fab-bottom-right(to="/record")
+        md-icon add
 </template>
 
 <script lang="ts">
@@ -28,6 +27,11 @@ export default defineComponent({
   data: (): DefaultLayoutData => ({
     isOpen: true,
   }),
+  methods: {
+    logOut() {
+      this.$router.push('/login?message=logout');
+    },
+  },
 });
 </script>
 
@@ -49,38 +53,7 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
-.grid {
-  display: grid;
-  grid-gap: var(--grid-gap-size);
-  grid-template-columns: 2fr 10fr;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.md-app-container {
+  min-height: 100vh;
 }
 </style>

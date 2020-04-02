@@ -1,10 +1,10 @@
 <template lang="pug">
-  md-toolbar
+  md-app-toolbar
     .md-toolbar-row
       .md-toolbar-section-start
-        md-button.md-icon-button(href="#" @click.prevent="$emit('click')")
+        md-button.md-icon-button(v-if='!value' @click="$emit('click')")
           md-icon menu
-        span.black-text 12.12.12
+        span.black-text {{ date | date('datetime') }}
 
       .md-toolbar-section-end
         md-menu(md-size="medium" md-align-trigger)
@@ -13,25 +13,53 @@
 
           md-menu-content
             md-menu-item
-              a.black-text(href="#")
+              md-button.md-dense(to="/profile")
                 md-icon account_circle
                 | Профиль
             md-divider
             md-menu-item
-              a.black-text(href="#")
+              md-button.md-dense(@click="$emit('exit')")
                 md-icon assignment_return
                 | Выйти
 </template>
 
-<script>
-import { defineComponent, onMounted } from '@vue/composition-api';
+<script lang="ts">
+import {
+  defineComponent,
+  ref,
+  onMounted,
+  onBeforeUnmount,
+} from '@vue/composition-api';
 
 export default defineComponent({
   name: 'NavBar',
+  props: {
+    value: {
+      type: Boolean,
+      default: false,
+    },
+  },
   setup() {
-    onMounted(() => {
-      // console.log(Materialize);
+    const date = ref(new Date());
+    let timerId: NodeJS.Timeout;
+
+    function setTimer() {
+      timerId = global.setInterval(() => {
+        date.value = new Date();
+      }, 1000);
+    }
+
+    onMounted((): void => {
+      setTimer();
     });
+
+    onBeforeUnmount((): void => {
+      clearInterval(timerId);
+    });
+
+    return {
+      date,
+    };
   },
 });
 </script>

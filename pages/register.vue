@@ -1,32 +1,34 @@
 <template lang="pug">
-  form.card.auth-card
-    .card-content
-      span.card-title Домашняя бухгалтерия
+  form
+    md-card.auth-card
+      md-card-header
+        span.md-title Домашняя бухгалтерия
 
-      .input-field
-        input#email(type="text")
-        label(for="email") Email
-        small.helper-text.invalid Email
-      .input-field
-        input#password.validate(type="password")
-        label(for="password") Пароль
-        small.helper-text.invalid Password
-      .input-field
-        input#name.validate(type="text")
-        label(for="name") Имя
-        small.helper-text.invalid Name
+      md-card-content
+        md-field
+          md-input#email(type="text")
+          label(for="email") Email
+          small.helper-text.md-error Email
+        md-field
+          md-input#password.validate(type="password")
+          label(for="password") Пароль
+          small.helper-text.md-error Password
+        md-field
+          md-input#name.validate(type="text")
+          label(for="name") Имя
+          small.helper-text.md-error Name
 
-      p
-        label
-          input(type="checkbox")
-          span С правилами согласен
+        p
+          label
+            md-checkbox.md-primary
+            span С правилами согласен
 
-    .card-action
-      button.btn.waves-effect.waves-light.auth-submit(type="submit") Зарегистрироваться
-        i.material-icons.right send
+      md-card-actions
+        md-button.md-raised.md-primary.auth-submit(type="submit") Зарегистрироваться
+          md-icon send
 
       p.center Уже есть аккаунт?
-        a(href="/")  Войти!
+        router-link(to="/login")  Войти!
 </template>
 
 <script>

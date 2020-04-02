@@ -8,8 +8,7 @@
         p
           strong Девушка:
           |  12 122 из 14 0000
-        .progress
-          .determinate.green(style="width:40%")
+        md-progress-bar(md-mode="determinate" :md-value="40")
 </template>
 
 <script>

@@ -1,14 +1,17 @@
 <template lang="pug">
-  ul.sidenav.app-sidenav(:class="{open: value}")
-    router-link(
-      v-for="(link, idx) in links"
-      :key="idx"
-      tag="li"
-      active-class="active"
-      :to="link.url"
-      :exact="link.exact || false"
-    )
-      a.waves-effect.waves-orange.pointer(href="#") {{ link.title }}
+  md-app-drawer(:md-active.sync="value" md-persistent="full")
+    md-toolbar.md-transparent(md-elevation="0")
+      .md-toolbar-section-end
+        md-button.md-icon-button.md-dense(@click="$emit('click')")
+          md-icon keyboard_arrow_left
+    md-list
+      md-list-item(v-for="(link, idx) in links" :key="idx")
+        md-button.md-accent(
+          active-class="active"
+          :to="link.url"
+          :exact="link.exact || false"
+        )
+          span {{ link.title }}
 </template>
 
 <script lang="ts">
@@ -24,6 +27,7 @@ export default defineComponent({
   props: {
     value: {
       type: Boolean,
+      default: false,
     },
   },
   data: (): SidebarData => ({
@@ -38,4 +42,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.md-drawer {
+  width: 250px;
+  height: 100vh;
+}
+</style>

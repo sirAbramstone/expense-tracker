@@ -4,10 +4,10 @@
       a.breadcrumb(href="/history") История
       a.breadcrumb Расход
 
-    .row
-      .col.s12.m6
-        .card.red
-          .card-content.white-text
+    .md-layout
+      .md-layout-item.md-small-size-100
+        md-card
+          md-card-content
             p Описание:
             p Сумма:
             p Категория:
