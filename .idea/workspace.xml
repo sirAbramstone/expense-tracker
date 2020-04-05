@@ -2,26 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12f0cae2-562b-4893-a580-f6fdf1039198" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/filters/date.filter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/interfaces/DateOpt.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugins/filters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interfaces/Login.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vuelidate.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/navBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/navBar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/sideBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/sideBar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/default.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/main.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nuxt.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/nuxt.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/bill.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/bill.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/categories.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/categories.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/detailRecord.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/detailRecord.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/history.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/history.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/planning.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/planning.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/record.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/record.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/register.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/vuelidate.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/vuelidate.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +167,8 @@
       <workItem from="1584607408907" duration="10539000" />
       <workItem from="1584701833749" duration="1216000" />
       <workItem from="1584969238364" duration="45419000" />
-      <workItem from="1585668649211" duration="24661000" />
+      <workItem from="1585668649211" duration="31329000" />
+      <workItem from="1585905443073" duration="14946000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add sideBar component">
       <created>1582126436800</created>
@@ -292,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585731922524</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="feat: rebuild all pages with vue-material">
+      <created>1585834527474</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1585834527474</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,41 +340,42 @@
     <MESSAGE value="feat: write test case for expenseForm" />
     <MESSAGE value="feat: add some new pages" />
     <MESSAGE value="feat: install vue material" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: install vue material" />
+    <MESSAGE value="feat: rebuild all pages with vue-material" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: rebuild all pages with vue-material" />
   </component>
   <component name="WindowStateProjectService">
     <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1585416088623">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1585416088623" />
-    <state x="693" y="301" width="524" height="511" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585668864357">
+    <state x="693" y="301" width="524" height="511" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585914636768">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="693" y="301" width="524" height="511" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585668864357" />
-    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2" timestamp="1585731922087">
+    <state x="693" y="301" width="524" height="511" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585914636768" />
+    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2" timestamp="1585834527260">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1585731922087" />
+    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1585834527260" />
     <state x="735" y="314" key="FileChooserDialogImpl" timestamp="1584972288496">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="735" y="314" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1584972288496" />
-    <state width="1895" height="377" key="GridCell.Tab.0.bottom" timestamp="1585735185372">
+    <state width="1895" height="377" key="GridCell.Tab.0.bottom" timestamp="1586092928904">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1895" height="377" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585735185372" />
-    <state width="1895" height="377" key="GridCell.Tab.0.center" timestamp="1585735185372">
+    <state width="1895" height="377" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1586092928904" />
+    <state width="1895" height="377" key="GridCell.Tab.0.center" timestamp="1586092928901">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1895" height="377" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585735185372" />
-    <state width="1895" height="377" key="GridCell.Tab.0.left" timestamp="1585735185371">
+    <state width="1895" height="377" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1586092928901" />
+    <state width="1895" height="377" key="GridCell.Tab.0.left" timestamp="1586092928899">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1895" height="377" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585735185371" />
-    <state width="1895" height="377" key="GridCell.Tab.0.right" timestamp="1585735185372">
+    <state width="1895" height="377" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1586092928898" />
+    <state width="1895" height="377" key="GridCell.Tab.0.right" timestamp="1586092928903">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1895" height="377" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585735185372" />
+    <state width="1895" height="377" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1586092928903" />
     <state width="1895" height="312" key="GridCell.Tab.1.bottom" timestamp="1585581630015">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -446,13 +444,17 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="695" y="468" width="529" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.1920.1053@0.27.1920.1053" timestamp="1585758579175" />
-    <state x="624" y="252" width="672" height="677" key="run.anything.popup" timestamp="1585832792323">
+    <state x="624" y="252" width="672" height="677" key="run.anything.popup" timestamp="1585905761426">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="624" y="252" width="672" height="677" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1585832792323" />
-    <state x="623" y="259" width="674" height="678" key="search.everywhere.popup" timestamp="1585834466560">
+    <state x="624" y="252" width="672" height="677" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1585905761426" />
+    <state x="623" y="259" width="674" height="678" key="search.everywhere.popup" timestamp="1585922527177">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="623" y="259" width="674" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1585834466560" />
+    <state x="623" y="259" width="674" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1585922527177" />
+    <state x="685" y="411" width="540" height="291" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1586092955638">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="685" y="411" width="540" height="291" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1586092955638" />
   </component>
 </project>

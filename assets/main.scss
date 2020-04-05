@@ -4,3 +4,9 @@
   font-size: 0.9em;
   color: #F00700;
 }
+
+.helper-text {
+  position: absolute;
+  top: 100%;
+  color: var(--md-theme-default-accent);
+}

@@ -74,8 +74,8 @@ module.exports = {
   buildModules: ['@nuxt/typescript-build', 'nuxt-typed-vuex'],
   plugins: [
     '@/plugins/composition-api',
-    '@/plugins/vuelidate',
+    '@/plugins/vuelidate.ts',
     '@/plugins/vue-material',
-    '~plugins/filters.js',
+    '@/plugins/filters.js',
   ],
 };
