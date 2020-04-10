@@ -78,4 +78,19 @@ module.exports = {
     '@/plugins/vue-material',
     '@/plugins/filters.js',
   ],
+  modules: ['@nuxtjs/toast'],
+  toast: {
+    position: 'top-center',
+    register: [
+      {
+        name: 'my_message',
+        message: payload => payload.message,
+        options: {
+          type: 'info',
+          theme: 'bubble',
+          duration: 3500,
+        },
+      },
+    ],
+  },
 };

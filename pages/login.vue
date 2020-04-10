@@ -4,15 +4,15 @@
       md-card-header
         span.md-title Домашняя бухгалтерия
       md-card-content
-        md-field
-          md-input#email(v-model.trim="$v.email.$model" type="text" :class="{ invalid: isInvalidEmail }")
+        md-field(:class="{ 'md-invalid': isInvalidEmail || isRequireEmail }")
+          md-input#email(v-model.trim="$v.email.$model" type="text")
           label(for="email") Email
-          small.helper-text(v-if="requiredEmail") Поле Email обязательно для ввода
-          small.helper-text(v-else-if="invalidEmail") Введите корректный Email
-        md-field
-          md-input#password(v-model.trim="$v.password.$model" type="password" :class="{ invalid: isInvalidPass }")
+          small.helper-text(v-if="isRequireEmail") Поле Email обязательно для заполнения
+          small.helper-text(v-else-if="isInvalidEmail") Введите корректный Email
+        md-field(:class="{ 'md-invalid': isRequirePass }")
+          md-input#password(v-model.trim="$v.password.$model" type="password")
           label(for="password") Пароль
-          small.helper-text(v-if="isInvalidPass") Поле Password обязательно для ввода
+          small.helper-text(v-if="isRequirePass") Поле Password обязательно для заполнения
       md-card-actions
         md-button.md-primary.md-raised.auth-submit(type="submit") Войти
           md-icon send
@@ -24,11 +24,14 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
 import { email, required } from 'vuelidate/lib/validators';
+import messages from '~/utils/messages';
 
 interface LoginData {
   email: string;
   password: string;
 }
+
+type ValidationKeys = 'email' | 'password';
 
 export default defineComponent({
   name: 'Login',
@@ -38,27 +41,42 @@ export default defineComponent({
     password: '',
   }),
   computed: {
+    isRequirePass(): boolean {
+      return this.isDirty('password') && this.isRequired('password');
+    },
     isInvalidEmail(): boolean {
-      return this.invalidEmail || this.requiredEmail;
+      return this.isDirty('email') && this.$v.email.$invalid;
     },
-    isInvalidPass(): boolean {
-      return this.$v.password.$dirty && !this.$v.password.required;
-    },
-    invalidEmail(): boolean {
-      return this.$v.email.$dirty && this.$v.email.$invalid;
-    },
-    requiredEmail(): boolean {
-      return this.$v.email.$dirty && !this.$v.email.required;
+    isRequireEmail(): boolean {
+      return this.isDirty('email') && this.isRequired('email');
     },
   },
   methods: {
+    isDirty(key: ValidationKeys): boolean {
+      return this.$v![key].$dirty;
+    },
+    isRequired(key: ValidationKeys): boolean {
+      return !this.$v![key].required;
+    },
     onSubmit(): void {
-      if (this.$v.$invalid) {
-        this.$v.$touch();
+      if (this.$v!.$invalid) {
+        this.$v!.$touch();
         return;
       }
+      const formData: LoginData = {
+        email: this.email,
+        password: this.password,
+      };
+      console.log(formData);
       this.$router.push('/bill');
     },
+  },
+  mounted(): void {
+    if (messages[this.$route.query.message]) {
+      this.$toast.global.my_message({
+        message: messages[this.$route.query.message],
+      });
+    }
   },
   validations: {
     email: { email, required },
