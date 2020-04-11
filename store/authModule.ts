@@ -8,15 +8,36 @@ type AuthModuleState = ReturnType<typeof state>;
 export const actions = actionTree(
   { state },
   {
-    async login(_ctx, { email, password }: User) {
+    async login({ commit }, { email, password }: User) {
       try {
         await this.$fireAuth.signInWithEmailAndPassword(email, password);
       } catch (e) {
-        console.error(e);
+        commit('setError', e, { root: true });
+        throw e;
       }
     },
+
     async logout() {
       await this.$fireAuth.signOut();
+    },
+
+    async register({ dispatch, commit }, { email, password, name }: User) {
+      try {
+        await this.$fireAuth.createUserWithEmailAndPassword(email, password);
+        const uid = await dispatch('getUid');
+        await this.$fireDb.ref(`users/${uid}/info`).set({
+          bill: 10000,
+          name,
+        });
+      } catch (e) {
+        commit('setError', e, { root: true });
+        throw e;
+      }
+    },
+
+    getUid() {
+      const user = this.$fireAuth.currentUser;
+      return user ? user.uid : null;
     },
   }
 );

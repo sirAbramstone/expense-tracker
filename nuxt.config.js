@@ -99,16 +99,23 @@ module.exports = {
   },
   toast: {
     position: 'top-center',
+    theme: 'bubble',
+    duration: 3500,
     register: [
       {
         name: 'my_message',
         message: payload => payload.message,
         options: {
           type: 'info',
-          theme: 'bubble',
-          duration: 3500,
         },
       },
+      {
+        name: 'my_error',
+        message: payload => payload.message,
+        options: {
+          type: 'error',
+        }
+      }
     ],
   },
 };

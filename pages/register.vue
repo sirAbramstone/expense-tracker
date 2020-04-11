@@ -70,7 +70,7 @@ export default defineComponent({
       return this.isDirty('name') && this.isRequired('name');
     },
     nameHasMinLength(): boolean {
-      return this.isDirty('name') && this.$v!.name.minLength;
+      return this.isDirty('name') && this.$v.name.minLength;
     },
   },
   validations: {
@@ -86,7 +86,7 @@ export default defineComponent({
     isRequired(key: ValidationKeys): boolean {
       return !this.$v![key].required;
     },
-    onSubmit(): void {
+    async onSubmit(): Promise<T> {
       if (this.$v!.$invalid) {
         this.$v!.$touch();
         return;
@@ -96,8 +96,11 @@ export default defineComponent({
         password: this.password,
         name: this.name,
       };
-      console.log(formData);
-      this.$router.push('/bill');
+
+      try {
+        await this.$accessor.authModule.register(formData);
+        this.$router.push('/bill');
+      } catch (e) {}
     },
   },
 });
