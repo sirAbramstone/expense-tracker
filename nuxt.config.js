@@ -78,7 +78,25 @@ module.exports = {
     '@/plugins/vue-material',
     '@/plugins/filters.js',
   ],
-  modules: ['@nuxtjs/toast'],
+  modules: [
+    '@nuxtjs/toast',
+    '@nuxtjs/firebase',
+  ],
+  firebase: {
+    config: {
+      apiKey: "AIzaSyDKjpqy__GmiU17CItJOQ8PMpA1ckrGMSU",
+      authDomain: "expense-tracker-79b9a.firebaseapp.com",
+      databaseURL: "https://expense-tracker-79b9a.firebaseio.com",
+      projectId: "expense-tracker-79b9a",
+      storageBucket: "expense-tracker-79b9a.appspot.com",
+      messagingSenderId: "1072838027585",
+      appId: "1:1072838027585:web:89352d03ce589ff26819c0",
+    },
+    services: {
+      auth: true,
+      realtimeDb: true,
+    }
+  },
   toast: {
     position: 'top-center',
     register: [

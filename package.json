@@ -18,8 +18,10 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@nuxtjs/firebase": "^5.0.7",
     "@nuxtjs/toast": "^3.3.0",
     "@vue/composition-api": "^0.4.0",
+    "firebase": "^7.14.0",
     "lodash.merge": "^4.6.2",
     "nuxt": "^2.0.0",
     "nuxt-typed-vuex": "^0.1.16",

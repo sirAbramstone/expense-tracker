@@ -58,7 +58,7 @@ export default defineComponent({
     isRequired(key: ValidationKeys): boolean {
       return !this.$v![key].required;
     },
-    onSubmit(): void {
+    async onSubmit(): void {
       if (this.$v!.$invalid) {
         this.$v!.$touch();
         return;
@@ -67,7 +67,7 @@ export default defineComponent({
         email: this.email,
         password: this.password,
       };
-      console.log(formData);
+      await this.$accessor.authModule.login(formData);
       this.$router.push('/bill');
     },
   },
