@@ -1,7 +1,7 @@
 <template lang="pug">
   .page-container
     md-app
-      nav-bar(@click="isOpen = !isOpen" @exit="logOut" v-model="isOpen" slot="md-app-toolbar")
+      nav-bar(@click="isOpen = !isOpen" v-model="isOpen" slot="md-app-toolbar")
       side-bar(@click="isOpen = !isOpen" v-model="isOpen" slot="md-app-drawer")
       md-app-content
         nuxt
@@ -27,11 +27,6 @@ export default defineComponent({
   data: (): DefaultLayoutData => ({
     isOpen: true,
   }),
-  methods: {
-    logOut() {
-      this.$router.push('/login?message=logout');
-    },
-  },
 });
 </script>
 

@@ -58,17 +58,21 @@ export default defineComponent({
     isRequired(key: ValidationKeys): boolean {
       return !this.$v![key].required;
     },
-    async onSubmit(): void {
+    async onSubmit(): Promise<T> {
       if (this.$v!.$invalid) {
         this.$v!.$touch();
         return;
       }
+
       const formData: LoginData = {
         email: this.email,
         password: this.password,
       };
-      await this.$accessor.authModule.login(formData);
-      this.$router.push('/bill');
+
+      try {
+        await this.$accessor.authModule.login(formData);
+        this.$router.push('/bill');
+      } catch (e) {}
     },
   },
   mounted(): void {

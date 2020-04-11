@@ -18,7 +18,7 @@
                 | Профиль
             md-divider
             md-menu-item
-              md-button.md-dense(@click="$emit('exit')")
+              md-button.md-dense(@click="logout")
                 md-icon assignment_return
                 | Выйти
 </template>
@@ -39,14 +39,19 @@ export default defineComponent({
       default: false,
     },
   },
-  setup() {
+  setup(_props, { root: { $accessor, $router } }) {
     const date = ref(new Date());
     let timerId: NodeJS.Timeout;
 
-    function setTimer() {
+    function setTimer(): void {
       timerId = global.setInterval(() => {
         date.value = new Date();
       }, 1000);
+    }
+
+    async function logout(): Promise<T> {
+      await $accessor.authModule.logout();
+      $router.push('/login?message=logout');
     }
 
     onMounted((): void => {
@@ -59,6 +64,7 @@ export default defineComponent({
 
     return {
       date,
+      logout,
     };
   },
 });
