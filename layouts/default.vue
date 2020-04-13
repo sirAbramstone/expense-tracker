@@ -27,6 +27,11 @@ export default defineComponent({
   data: (): DefaultLayoutData => ({
     isOpen: true,
   }),
+  async mounted(): Promise<any> {
+    if (!this.$accessor.infoModule.info) {
+      await this.$accessor.infoModule.fetchInfo();
+    }
+  },
 });
 </script>
 

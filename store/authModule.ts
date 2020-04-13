@@ -17,8 +17,9 @@ export const actions = actionTree(
       }
     },
 
-    async logout() {
+    async logout({ commit }): Promise<any> {
       await this.$fireAuth.signOut();
+      commit('clearInfo', null, { root: true });
     },
 
     async register({ dispatch, commit }, { email, password, name }: User) {
@@ -35,9 +36,11 @@ export const actions = actionTree(
       }
     },
 
-    getUid() {
+    getUid(): string | null {
       const user = this.$fireAuth.currentUser;
       return user ? user.uid : null;
     },
   }
 );
+
+export const namespaced = true;

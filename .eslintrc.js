@@ -24,9 +24,10 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": ["warn", {
       "vars": "all",
       "args": "after-used",
-      "ignoreRestSiblings": false
+      "ignoreRestSiblings": false,
     }],
     'vue/max-attributes-per-line': 'off',
-    'prettier/prettier': ['error', { 'semi': true }]
+    'prettier/prettier': ['error', { 'semi': true }],
+    'no-useless-catch': 'off',
   }
-}
+};

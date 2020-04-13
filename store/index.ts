@@ -2,6 +2,7 @@ import { getAccessorType, mutationTree } from 'nuxt-typed-vuex';
 
 import * as expenseModule from '~/store/expenseModule.ts';
 import * as authModule from '~/store/authModule.ts';
+import * as infoModule from '~/store/infoModule';
 
 export const state = () => ({
   name: 'expenses tracker',
@@ -31,5 +32,6 @@ export const accessorType = getAccessorType({
   modules: {
     expenseModule,
     authModule,
+    infoModule,
   },
 });
