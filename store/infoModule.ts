@@ -1,5 +1,4 @@
-import { useAccessor, actionTree, mutationTree } from 'nuxt-typed-vuex';
-import * as authModule from '~/store/authModule';
+import { actionTree, mutationTree } from 'nuxt-typed-vuex';
 
 export const state = () => ({
   info: null,
@@ -10,10 +9,9 @@ type InfoModuleState = ReturnType<typeof state>;
 export const actions = actionTree(
   { state },
   {
-    async fetchInfo({ commit }): Promise<any> {
-      const auth = useAccessor(this.app.store, authModule, 'authModule');
+    async fetchInfo({ dispatch, commit }): Promise<any> {
       try {
-        const uid = await auth.getUid();
+        const uid = await dispatch('authModule/getUid', null, { root: true });
         const info = (
           await this.$fireDb.ref(`/users/${uid}/info`).once('value')
         ).val();

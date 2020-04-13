@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12f0cae2-562b-4893-a580-f6fdf1039198" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/store/infoModule.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/billCard.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/currencyCard.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/default.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/navBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/navBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bill.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/bill.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/store/authModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/authModule.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/infoModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/infoModule.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +20,9 @@
       <list>
         <option value="CSS File" />
         <option value="HTML File" />
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -168,7 +169,7 @@
       <workItem from="1585668649211" duration="31329000" />
       <workItem from="1585905443073" duration="20661000" />
       <workItem from="1586284427945" duration="17979000" />
-      <workItem from="1586605203672" duration="12311000" />
+      <workItem from="1586605203672" duration="15606000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add sideBar component">
       <created>1582126436800</created>
@@ -324,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586611576751</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="feat: create store module, what contains user-info">
+      <created>1586782353395</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1586782353395</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -381,7 +389,8 @@
     <MESSAGE value="feat: install firebase. Add auth store module" />
     <MESSAGE value="feat: add logout action" />
     <MESSAGE value="feat: add error messages for FB errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add error messages for FB errors" />
+    <MESSAGE value="feat: create store module, what contains user-info" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: create store module, what contains user-info" />
   </component>
   <component name="WindowStateProjectService">
     <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1586521049572">
@@ -392,10 +401,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="693" y="301" width="524" height="511" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585914636768" />
-    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2" timestamp="1586611576313">
+    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2" timestamp="1586782353280">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1586611576313" />
+    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1586782353280" />
     <state x="735" y="314" key="FileChooserDialogImpl" timestamp="1584972288496">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -496,10 +505,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="624" y="252" width="672" height="677" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1585905761426" />
-    <state x="623" y="259" width="674" height="678" key="search.everywhere.popup" timestamp="1586782223696">
+    <state x="623" y="259" width="674" height="678" key="search.everywhere.popup" timestamp="1586786102689">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="623" y="259" width="674" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1586782223696" />
+    <state x="623" y="259" width="674" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1586786102689" />
     <state x="685" y="411" width="540" height="291" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1586092988920">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>

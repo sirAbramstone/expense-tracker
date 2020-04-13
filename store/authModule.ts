@@ -19,7 +19,7 @@ export const actions = actionTree(
 
     async logout({ commit }): Promise<any> {
       await this.$fireAuth.signOut();
-      commit('clearInfo', null, { root: true });
+      commit('infoModule/clearInfo', null, { root: true });
     },
 
     async register({ dispatch, commit }, { email, password, name }: User) {
@@ -42,5 +42,3 @@ export const actions = actionTree(
     },
   }
 );
-
-export const namespaced = true;

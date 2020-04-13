@@ -8,7 +8,7 @@
 
       .md-toolbar-section-end
         md-menu(md-size="medium" md-align-trigger)
-          md-button(md-menu-trigger) USER NAME
+          md-button(md-menu-trigger) {{ name }}
             md-icon arrow_drop_down
 
           md-menu-content
@@ -37,6 +37,11 @@ export default defineComponent({
     value: {
       type: Boolean,
       default: false,
+    },
+  },
+  computed: {
+    name(): string {
+      return this.$accessor.infoModule.info.name;
     },
   },
   setup(_props, { root: { $accessor, $router } }) {
