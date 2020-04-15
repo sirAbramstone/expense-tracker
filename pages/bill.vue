@@ -5,9 +5,11 @@
       md-button.md-icon-button.md-primary
         md-icon refresh
 
-    .md-layout
+    loader(v-if="isLoading")
+
+    .md-layout(v-else)
       bill-card(:bill="bill")
-      currency-card
+      currency-card(:rates="currency.rates")
 </template>
 
 <script lang="ts">
@@ -21,10 +23,18 @@ export default defineComponent({
     BillCard,
     CurrencyCard,
   },
+  data: () => ({
+    isLoading: true,
+    currency: null,
+  }),
   computed: {
     bill(): string {
-      return (+this.$accessor.infoModule.info.bill).toFixed(2);
+      return this.$accessor.infoModule.info?.bill ?? 0;
     },
+  },
+  async mounted(): Promise<any> {
+    this.currency = await this.$accessor.fetchCurrency();
+    this.isLoading = false;
   },
 });
 </script>

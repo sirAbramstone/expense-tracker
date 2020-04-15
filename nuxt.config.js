@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const
   TerserWebpackPlugin = require('terser-webpack-plugin'),
   OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
@@ -25,6 +27,10 @@ module.exports = {
     { src: 'vue-material/dist/vue-material.min.css', lang: 'css' },
     { src: 'vue-material/dist/theme/default.css', lang: 'css' },
   ],
+  env: {
+    FixerKey: process.env.NUXT_ENV_FIXER,
+    FBKey: process.env.NUXT_ENV_FB,
+  },
   /*
   ** Customize the progress bar color
   */
@@ -71,7 +77,11 @@ module.exports = {
   extends: [
     '@nuxtjs/eslint-config-typescript',
   ],
-  buildModules: ['@nuxt/typescript-build', 'nuxt-typed-vuex'],
+  buildModules: [
+    '@nuxt/typescript-build',
+    'nuxt-typed-vuex',
+    '@nuxtjs/global-components',
+  ],
   plugins: [
     '@/plugins/composition-api',
     '@/plugins/vuelidate.ts',
@@ -81,10 +91,17 @@ module.exports = {
   modules: [
     '@nuxtjs/toast',
     '@nuxtjs/firebase',
+    ['nuxt-env', {
+      keys: [
+        { key: 'NUXT_ENV_FB', name: 'FBKey' },
+        { key: 'NUXT_ENV_FIXER', name: 'FixerKey'}
+      ]
+    }],
+    '@nuxtjs/dotenv',
   ],
   firebase: {
     config: {
-      apiKey: "AIzaSyDKjpqy__GmiU17CItJOQ8PMpA1ckrGMSU",
+      apiKey: process.env.NUXT_ENV_FB,
       authDomain: "expense-tracker-79b9a.firebaseapp.com",
       databaseURL: "https://expense-tracker-79b9a.firebaseio.com",
       projectId: "expense-tracker-79b9a",

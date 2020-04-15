@@ -41,7 +41,7 @@ export default defineComponent({
   },
   computed: {
     name(): string {
-      return this.$accessor.infoModule.info.name;
+      return this.$accessor.infoModule.info?.name ?? 'Пользователь';
     },
   },
   setup(_props, { root: { $accessor, $router } }) {

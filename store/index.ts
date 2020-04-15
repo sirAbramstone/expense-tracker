@@ -1,4 +1,4 @@
-import { getAccessorType, mutationTree } from 'nuxt-typed-vuex';
+import { getAccessorType, mutationTree, actionTree } from 'nuxt-typed-vuex';
 
 import * as expenseModule from '~/store/expenseModule.ts';
 import * as authModule from '~/store/authModule.ts';
@@ -10,6 +10,20 @@ export const state = () => ({
 });
 
 type RootState = ReturnType<typeof state>;
+
+export const actions = actionTree(
+  { state },
+  {
+    async fetchCurrency(): Promise<any> {
+      const key = this.$env.FixerKey;
+      console.log(this.$env);
+      const res = await fetch(
+        `http://data.fixer.io/api/latest?access_key=${key}&symbols=USD,EUR,RUB`
+      );
+      return await res.json();
+    },
+  }
+);
 
 export const mutations = mutationTree(state, {
   setError(state, error) {

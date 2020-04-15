@@ -14,10 +14,9 @@ export default {
   name: 'BillCard',
   props: {
     bill: {
-      type: String,
+      type: Number,
       required: true,
-      default: '0',
-      validator: (val: string) => (+val).toFixed(2) === val,
+      default: 0,
     },
   },
 };
@@ -27,6 +26,7 @@ export default {
 @import '~vue-material/dist/theme/engine';
 
 .bill-card {
+  height: 310px;
   background-color: md-get-palette-color(blue, 500);
   color: white;
 }

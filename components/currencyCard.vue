@@ -1,4 +1,4 @@
-<template lang="pug">
+<template lang="pug" functional>
   .md-layout-item.md-large-size-66.md-small-size-100
     md-card.currency-card(md-with-hover)
       md-ripple
@@ -21,6 +21,13 @@
 <script>
 export default {
   name: 'CurrencyCard',
+  props: {
+    rates: {
+      type: Object,
+      required: true,
+      default: () => ({}),
+    },
+  },
 };
 </script>
 
@@ -28,6 +35,8 @@ export default {
 @import '~vue-material/dist/theme/engine';
 
 .currency-card {
+  min-height: 310px;
   background-color: md-get-palette-color(red, 500);
+  color: white;
 }
 </style>
