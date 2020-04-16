@@ -1,16 +1,22 @@
-<template lang="pug" functional>
+<template lang="pug">
   .md-layout-item.md-large-size-33.md-small-size-100
     md-card.bill-card(md-with-hover)
       md-ripple
         md-card-header
           span.md-title Счет в валюте
         md-card-content
-          p.currency-line
-            span {{ props.bill }} Р
+          p.currency-line(v-for="cur of currencies" :key="cur")
+            span {{ getCurrency(cur) | currency(cur) }}
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from '@vue/composition-api';
+
+interface BillCardData {
+  currencies: Array<string>;
+}
+
+export default defineComponent({
   name: 'BillCard',
   props: {
     bill: {
@@ -18,8 +24,28 @@ export default {
       required: true,
       default: 0,
     },
+    rates: {
+      type: Object,
+      required: true,
+      default: () => ({}),
+    },
   },
-};
+  data: (): BillCardData => ({
+    currencies: ['RUB', 'EUR', 'USD'],
+  }),
+  computed: {
+    base(): number {
+      return (
+        this.$accessor.infoModule.info.bill / (this.rates.RUB / this.rates.EUR)
+      );
+    },
+  },
+  methods: {
+    getCurrency(currency: string): number {
+      return Math.floor(this.base * this.rates[currency]);
+    },
+  },
+});
 </script>
 
 <style lang="scss" scoped>

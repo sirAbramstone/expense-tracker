@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="12f0cae2-562b-4893-a580-f6fdf1039198" name="Default Changelist" comment="">
+    <list default="true" id="12f0cae2-562b-4893-a580-f6fdf1039198" name="Default Changelist" comment="feat: set env variables for fixer &amp; firebase api keys">
       <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/loader.global.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/filters/currency.filter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/billCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/billCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/currencyCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/currencyCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/navBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/navBar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nuxt.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/nuxt.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/bill.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/bill.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/filters.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/filters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-shim.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vue-shim.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +23,8 @@
         <option value="CSS File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
-        <option value="TypeScript File" />
         <option value="Vue Single File Component" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -177,7 +174,7 @@
       <workItem from="1586605203672" duration="20325000" />
       <workItem from="1586861722346" duration="2078000" />
       <workItem from="1586863921543" duration="1417000" />
-      <workItem from="1586865354810" duration="4705000" />
+      <workItem from="1586865354810" duration="9671000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add sideBar component">
       <created>1582126436800</created>
@@ -347,7 +344,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586786458889</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="feat: set env variables for fixer &amp; firebase api keys">
+      <created>1586964766540</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1586964766540</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -406,7 +410,8 @@
     <MESSAGE value="feat: add error messages for FB errors" />
     <MESSAGE value="feat: create store module, what contains user-info" />
     <MESSAGE value="feat: create billCard &amp; currencyCard components" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: create billCard &amp; currencyCard components" />
+    <MESSAGE value="feat: set env variables for fixer &amp; firebase api keys" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: set env variables for fixer &amp; firebase api keys" />
   </component>
   <component name="WindowStateProjectService">
     <state x="634" y="344" width="642" height="425" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586853126130">
@@ -421,10 +426,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="693" y="301" width="524" height="511" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585914636768" />
-    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2" timestamp="1586786458711">
+    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2" timestamp="1587026689691">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1586786458711" />
+    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1587026689691" />
     <state x="735" y="314" key="FileChooserDialogImpl" timestamp="1584972288496">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -525,10 +530,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="624" y="252" width="672" height="677" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1585905761426" />
-    <state x="623" y="259" width="674" height="678" key="search.everywhere.popup" timestamp="1586861825422">
+    <state x="623" y="259" width="674" height="678" key="search.everywhere.popup" timestamp="1587026487670">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="623" y="259" width="674" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1586861825422" />
+    <state x="623" y="259" width="674" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1587026487670" />
     <state x="685" y="411" width="540" height="291" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1586092988920">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>

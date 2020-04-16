@@ -16,7 +16,6 @@ export const actions = actionTree(
   {
     async fetchCurrency(): Promise<any> {
       const key = this.$env.FixerKey;
-      console.log(this.$env);
       const res = await fetch(
         `http://data.fixer.io/api/latest?access_key=${key}&symbols=USD,EUR,RUB`
       );

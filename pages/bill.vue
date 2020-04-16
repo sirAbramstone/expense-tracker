@@ -8,7 +8,7 @@
     loader(v-if="isLoading")
 
     .md-layout(v-else)
-      bill-card(:bill="bill")
+      bill-card(:bill="bill" :rates="currency.rates")
       currency-card(:rates="currency.rates")
 </template>
 
@@ -17,13 +17,18 @@ import { defineComponent } from '@vue/composition-api';
 import BillCard from '~/components/billCard';
 import CurrencyCard from '~/components/currencyCard';
 
+interface BillData {
+  isLoading: boolean;
+  currency: any;
+}
+
 export default defineComponent({
   name: 'Bill',
   components: {
     BillCard,
     CurrencyCard,
   },
-  data: () => ({
+  data: (): BillData => ({
     isLoading: true,
     currency: null,
   }),

@@ -1,5 +1,6 @@
 import { accessorType } from '~/store';
 import VueRouter, { Route } from 'vue-router';
+import env from '.nuxt/nuxt-env';
 
 declare module '*.vue' {
   import Vue from 'vue';
@@ -11,6 +12,7 @@ declare module 'vue/types/vue' {
     $accessor: typeof accessorType;
     $router: VueRouter;
     $route: Route;
+    $env: typeof env
   }
 }
 

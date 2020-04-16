@@ -16,5 +16,8 @@ coverage
 #html templates
 templates
 
-# idea
+# IDE
 /.idea/
+
+# .env
+.env
