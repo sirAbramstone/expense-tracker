@@ -93,6 +93,7 @@ module.exports = {
     '@/plugins/vuelidate.ts',
     '@/plugins/vue-material',
     '@/plugins/filters.js',
+    '@/plugins/mixins.js',
   ],
   modules: [
     '@nuxtjs/toast',

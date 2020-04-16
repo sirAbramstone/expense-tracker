@@ -31,8 +31,6 @@ interface LoginData {
   password: string;
 }
 
-type ValidationKeys = 'email' | 'password';
-
 export default defineComponent({
   name: 'Login',
   layout: 'auth',
@@ -42,22 +40,16 @@ export default defineComponent({
   }),
   computed: {
     isRequirePass(): boolean {
-      return this.isDirty('password') && this.isRequired('password');
+      return this.$isDirty('password') && this.$isRequired('password');
     },
     isInvalidEmail(): boolean {
-      return this.isDirty('email') && this.$v.email.$invalid;
+      return this.$isDirty('email') && this.$v.email.$invalid;
     },
     isRequireEmail(): boolean {
-      return this.isDirty('email') && this.isRequired('email');
+      return this.$isDirty('email') && this.$isRequired('email');
     },
   },
   methods: {
-    isDirty(key: ValidationKeys): boolean {
-      return this.$v![key].$dirty;
-    },
-    isRequired(key: ValidationKeys): boolean {
-      return !this.$v![key].required;
-    },
     async onSubmit(): Promise<T> {
       if (this.$v!.$invalid) {
         this.$v!.$touch();

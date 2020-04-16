@@ -45,8 +45,6 @@ interface RegisterData {
   agree?: boolean;
 }
 
-type ValidationKeys = 'email' | 'password' | 'name';
-
 export default defineComponent({
   name: 'Register',
   layout: 'auth',
@@ -58,19 +56,19 @@ export default defineComponent({
   }),
   computed: {
     isRequirePass(): boolean {
-      return this.isDirty('password') && this.isRequired('password');
+      return this.$isDirty('password') && this.$isRequired('password');
     },
     isInvalidEmail(): boolean {
-      return this.isDirty('email') && this.$v.email.$invalid;
+      return this.$isDirty('email') && this.$v.email.$invalid;
     },
     isRequireEmail(): boolean {
-      return this.isDirty('email') && this.isRequired('email');
+      return this.$isDirty('email') && this.$isRequired('email');
     },
     isRequireName(): boolean {
-      return this.isDirty('name') && this.isRequired('name');
+      return this.$isDirty('name') && this.$isRequired('name');
     },
     nameHasMinLength(): boolean {
-      return this.isDirty('name') && this.$v.name.minLength;
+      return this.$isDirty('name') && this.$v.name.minLength;
     },
   },
   validations: {
@@ -80,12 +78,6 @@ export default defineComponent({
     agree: { checked: (v: boolean): boolean => v },
   },
   methods: {
-    isDirty(key: ValidationKeys): boolean {
-      return this.$v![key].$dirty;
-    },
-    isRequired(key: ValidationKeys): boolean {
-      return !this.$v![key].required;
-    },
     async onSubmit(): Promise<T> {
       if (this.$v!.$invalid) {
         this.$v!.$touch();
