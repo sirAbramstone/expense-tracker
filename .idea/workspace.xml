@@ -3,14 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="12f0cae2-562b-4893-a580-f6fdf1039198" name="Default Changelist" comment="feat: set env variables for fixer &amp; firebase api keys">
       <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filters/currency.filter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/billCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/billCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/bill.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/bill.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/filters.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/filters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-shim.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vue-shim.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuxt.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/nuxt.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +171,7 @@
       <workItem from="1586605203672" duration="20325000" />
       <workItem from="1586861722346" duration="2078000" />
       <workItem from="1586863921543" duration="1417000" />
-      <workItem from="1586865354810" duration="9671000" />
+      <workItem from="1586865354810" duration="12031000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add sideBar component">
       <created>1582126436800</created>
@@ -351,7 +348,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586964766540</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="feat: create currency filter">
+      <created>1587026756378</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1587026756378</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,7 +390,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="feat: add sideBar component" />
     <MESSAGE value="feat: add expenseForm component. add styles for expense-form" />
     <MESSAGE value="feat: create Expense interface. Create expenseForm composition" />
     <MESSAGE value="feat: create expenses composition. Create expensesList component" />
@@ -411,7 +414,8 @@
     <MESSAGE value="feat: create store module, what contains user-info" />
     <MESSAGE value="feat: create billCard &amp; currencyCard components" />
     <MESSAGE value="feat: set env variables for fixer &amp; firebase api keys" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: set env variables for fixer &amp; firebase api keys" />
+    <MESSAGE value="feat: create currency filter" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: create currency filter" />
   </component>
   <component name="WindowStateProjectService">
     <state x="634" y="344" width="642" height="425" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586853126130">
@@ -426,10 +430,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="693" y="301" width="524" height="511" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585914636768" />
-    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2" timestamp="1587026689691">
+    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2" timestamp="1587026756126">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1587026689691" />
+    <state x="439" y="57" width="1031" height="1000" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1587026756126" />
     <state x="735" y="314" key="FileChooserDialogImpl" timestamp="1584972288496">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -438,22 +442,22 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="0" y="27" width="1910" height="1053" key="FileDocumentManager.FileCacheConflict/0.27.1920.1053@0.27.1920.1053" timestamp="1586603713683" />
-    <state width="1895" height="336" key="GridCell.Tab.0.bottom" timestamp="1586964453952">
+    <state width="1895" height="336" key="GridCell.Tab.0.bottom" timestamp="1587028065995">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1895" height="336" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1586964453952" />
-    <state width="1895" height="336" key="GridCell.Tab.0.center" timestamp="1586964453950">
+    <state width="1895" height="336" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1587028065995" />
+    <state width="1895" height="336" key="GridCell.Tab.0.center" timestamp="1587028065994">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1895" height="336" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1586964453950" />
-    <state width="1895" height="336" key="GridCell.Tab.0.left" timestamp="1586964453949">
+    <state width="1895" height="336" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1587028065994" />
+    <state width="1895" height="336" key="GridCell.Tab.0.left" timestamp="1587028065993">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1895" height="336" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1586964453949" />
-    <state width="1895" height="336" key="GridCell.Tab.0.right" timestamp="1586964453951">
+    <state width="1895" height="336" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1587028065993" />
+    <state width="1895" height="336" key="GridCell.Tab.0.right" timestamp="1587028065994">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1895" height="336" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1586964453951" />
+    <state width="1895" height="336" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1587028065994" />
     <state width="1895" height="312" key="GridCell.Tab.1.bottom" timestamp="1585581630015">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>

@@ -73,6 +73,12 @@ module.exports = {
     transpile: [
       /typed-vuex/,
     ],
+    babel: {
+      plugins: [
+        "@babel/plugin-proposal-nullish-coalescing-operator",
+        "@babel/plugin-proposal-optional-chaining",
+      ]
+    },
   },
   extends: [
     '@nuxtjs/eslint-config-typescript',

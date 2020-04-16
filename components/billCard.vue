@@ -41,8 +41,8 @@ export default defineComponent({
     },
   },
   methods: {
-    getCurrency(currency: string): number {
-      return Math.floor(this.base * this.rates[currency]);
+    getCurrency(currency: string): string {
+      return (this.base * this.rates[currency]).toFixed(2);
     },
   },
 });
