@@ -8,7 +8,7 @@
     loader(v-if="isLoading")
 
     .md-layout(v-else)
-      bill-card(:rates="currency.rates")
+      bill-card(:rates="currency.rates" :currencies="currencies")
       currency-card(:rates="currency.rates" :date="currency.date" :currencies="currencies")
 </template>
 

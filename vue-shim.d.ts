@@ -3,6 +3,7 @@ import VueRouter, { Route } from 'vue-router';
 import env from '.nuxt/nuxt-env';
 
 declare module '*.vue' {
+  // @ts-ignore
   import Vue from 'vue';
   export default Vue;
 }

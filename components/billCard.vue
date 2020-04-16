@@ -12,10 +12,6 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
 
-interface BillCardData {
-  currencies: Array<string>;
-}
-
 export default defineComponent({
   name: 'BillCard',
   props: {
@@ -24,10 +20,11 @@ export default defineComponent({
       required: true,
       default: () => ({}),
     },
+    currencies: {
+      type: Array,
+      required: true,
+    },
   },
-  data: (): BillCardData => ({
-    currencies: ['RUB', 'EUR', 'USD'],
-  }),
   computed: {
     base(): number {
       return (
