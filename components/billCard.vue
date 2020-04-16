@@ -31,7 +31,7 @@ export default defineComponent({
   computed: {
     base(): number {
       return (
-        this.$accessor.infoModule.info.bill / (this.rates.RUB / this.rates.EUR)
+        this.$accessor.infoModule.info?.bill / (this.rates.RUB / this.rates.EUR)
       );
     },
   },

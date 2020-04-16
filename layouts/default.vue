@@ -1,13 +1,16 @@
 <template lang="pug">
-  .page-container
-    md-app
-      nav-bar(@click="isOpen = !isOpen" v-model="isOpen" slot="md-app-toolbar")
-      side-bar(@click="isOpen = !isOpen" v-model="isOpen" slot="md-app-drawer")
-      md-app-content
-        nuxt
+  div
+    loader(v-if="isLoading")
 
-    md-button.md-fab.md-primary.md-fab-bottom-right(to="/record")
-        md-icon add
+    .page-container(v-else)
+      md-app
+        nav-bar(@click="isOpen = !isOpen" v-model="isOpen" slot="md-app-toolbar")
+        side-bar(@click="isOpen = !isOpen" v-model="isOpen" slot="md-app-drawer")
+        md-app-content
+          nuxt
+
+      md-button.md-fab.md-primary.md-fab-bottom-right(to="/record")
+          md-icon add
 </template>
 
 <script lang="ts">
@@ -17,6 +20,7 @@ import NavBar from '~/components/navBar.vue';
 
 interface DefaultLayoutData {
   isOpen: boolean;
+  isLoading: boolean;
 }
 
 export default defineComponent({
@@ -26,11 +30,14 @@ export default defineComponent({
   },
   data: (): DefaultLayoutData => ({
     isOpen: true,
+    isLoading: true,
   }),
   async mounted(): Promise<any> {
     if (!this.$accessor.infoModule.info) {
       await this.$accessor.infoModule.fetchInfo();
     }
+
+    this.isLoading = false;
   },
 });
 </script>
