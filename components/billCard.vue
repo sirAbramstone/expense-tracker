@@ -19,11 +19,6 @@ interface BillCardData {
 export default defineComponent({
   name: 'BillCard',
   props: {
-    bill: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
     rates: {
       type: Object,
       required: true,

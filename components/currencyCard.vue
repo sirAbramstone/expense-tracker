@@ -12,10 +12,10 @@
               md-table-head Курс
               md-table-head Дата
 
-            md-table-row
-              md-table-cell руб
-              md-table-cell 12121
-              md-table-cell 12.12.12
+            md-table-row(v-for="cur in props.currencies" :key="cur")
+              md-table-cell {{ cur }}
+              md-table-cell {{ props.rates[cur] }}
+              md-table-cell {{ props.date }}
 </template>
 
 <script>
@@ -26,6 +26,14 @@ export default {
       type: Object,
       required: true,
       default: () => ({}),
+    },
+    date: {
+      type: String,
+      required: true,
+    },
+    currencies: {
+      type: Array,
+      required: true,
     },
   },
 };

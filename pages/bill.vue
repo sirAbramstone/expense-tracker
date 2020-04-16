@@ -8,8 +8,8 @@
     loader(v-if="isLoading")
 
     .md-layout(v-else)
-      bill-card(:bill="bill" :rates="currency.rates")
-      currency-card(:rates="currency.rates")
+      bill-card(:rates="currency.rates")
+      currency-card(:rates="currency.rates" :date="currency.date" :currencies="currencies")
 </template>
 
 <script lang="ts">
@@ -20,6 +20,7 @@ import CurrencyCard from '~/components/currencyCard';
 interface BillData {
   isLoading: boolean;
   currency: any;
+  currencies: string[];
 }
 
 export default defineComponent({
@@ -31,12 +32,8 @@ export default defineComponent({
   data: (): BillData => ({
     isLoading: true,
     currency: null,
+    currencies: ['RUB', 'EUR', 'USD'],
   }),
-  computed: {
-    bill(): string {
-      return this.$accessor.infoModule.info?.bill ?? 0;
-    },
-  },
   async mounted(): Promise<any> {
     this.currency = await this.$accessor.fetchCurrency();
     this.isLoading = false;
