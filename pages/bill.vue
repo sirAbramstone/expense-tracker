@@ -2,7 +2,7 @@
   div
     .page-title
       h3 Счет
-      md-button.md-icon-button.md-primary
+      md-button.md-icon-button.md-primary(@click="refresh")
         md-icon refresh
 
     loader(v-if="isLoading")
@@ -37,6 +37,13 @@ export default defineComponent({
   async mounted(): Promise<any> {
     this.currency = await this.$accessor.fetchCurrency();
     this.isLoading = false;
+  },
+  methods: {
+    async refresh(): Promise<any> {
+      this.isLoading = true;
+      this.currency = await this.$accessor.fetchCurrency();
+      this.isLoading = false;
+    },
   },
 });
 </script>

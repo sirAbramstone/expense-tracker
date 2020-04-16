@@ -15,7 +15,7 @@
             md-table-row(v-for="cur in props.currencies" :key="cur")
               md-table-cell {{ cur }}
               md-table-cell {{ props.rates[cur] }}
-              md-table-cell {{ props.date }}
+              md-table-cell {{ props.date | date('date') }}
 </template>
 
 <script>
