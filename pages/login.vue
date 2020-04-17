@@ -51,8 +51,8 @@ export default defineComponent({
   },
   methods: {
     async onSubmit(): Promise<T> {
-      if (this.$v!.$invalid) {
-        this.$v!.$touch();
+      if (this.$v.$invalid) {
+        this.$v.$touch();
         return;
       }
 

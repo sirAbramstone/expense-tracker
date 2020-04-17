@@ -3,7 +3,7 @@
     .page-subtitle
       h4 Создать
 
-    form(novalidate)
+    form(novalidate @submit.prevent="createHandler")
       md-field(:class="{'md-invalid': isRequiredName}")
         md-input#name(v-model.trim="$v.name.$model" type="text")
         label(for="name") Название
@@ -16,7 +16,7 @@
           | Минимальная величина должна быть не меньше {{ $v.limit.$params.minValue.min }}
         span.md-error(v-else-if="isRequiredLimit") Поле лимит обязательно для заполнения
 
-      md-button.md-raised.md-primary Создать
+      md-button.md-raised.md-primary(type="submit") Создать
         md-icon send
 </template>
 
@@ -33,12 +33,8 @@ export default defineComponent({
   name: 'CategoryCreate',
   data: (): CategoryCreateData => ({
     name: '',
-    limit: 0,
+    limit: 1,
   }),
-  validations: {
-    name: { required },
-    limit: { required, minValue: minValue(100) },
-  },
   computed: {
     isRequiredName(): boolean {
       return this.$isDirty('name') && this.$isRequired('name');
@@ -49,6 +45,17 @@ export default defineComponent({
     isInvalidLimit(): boolean {
       return this.$isDirty('limit') && this.$v.limit.$invalid;
     },
+  },
+  methods: {
+    createHandler() {
+      if (this.$v.$invalid) {
+
+      }
+    },
+  },
+  validations: {
+    name: { required },
+    limit: { required, minValue: minValue(100) },
   },
 });
 </script>
