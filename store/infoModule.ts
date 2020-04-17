@@ -11,13 +11,14 @@ export const actions = actionTree(
   {
     async fetchInfo({ dispatch, commit }): Promise<any> {
       try {
-        const uid = await dispatch('authModule/getUid', null, { root: true });
+        const uid = await dispatch('getUid', null, { root: true });
         const info = (
           await this.$fireDb.ref(`/users/${uid}/info`).once('value')
         ).val();
 
         commit('setInfo', info);
       } catch (e) {
+        commit('setError', e, { root: true });
         throw e;
       }
     },

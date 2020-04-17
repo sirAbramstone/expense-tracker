@@ -25,7 +25,7 @@ export const actions = actionTree(
     async register({ dispatch, commit }, { email, password, name }: User) {
       try {
         await this.$fireAuth.createUserWithEmailAndPassword(email, password);
-        const uid = await dispatch('getUid');
+        const uid = await dispatch('getUid', null, { root: true });
         await this.$fireDb.ref(`users/${uid}/info`).set({
           bill: 10000,
           name,
@@ -34,11 +34,6 @@ export const actions = actionTree(
         commit('setError', e, { root: true });
         throw e;
       }
-    },
-
-    getUid(): string | null {
-      const user = this.$fireAuth.currentUser;
-      return user ? user.uid : null;
     },
   }
 );

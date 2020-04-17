@@ -23,15 +23,11 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
 import { required, minValue } from 'vuelidate/lib/validators';
-
-interface CategoryCreateData {
-  name: string;
-  limit: number;
-}
+import { Category } from '~/interfaces/Category';
 
 export default defineComponent({
   name: 'CategoryCreate',
-  data: (): CategoryCreateData => ({
+  data: (): Category => ({
     name: '',
     limit: 1,
   }),
@@ -54,10 +50,11 @@ export default defineComponent({
       }
 
       try {
-        await this.$accessor.categoryModule.createCategory({
-          title: this.name,
+        const category = await this.$accessor.categoryModule.createCategory({
+          name: this.name,
           limit: this.limit,
         });
+        console.log(category);
       } catch (e) {}
     },
   },

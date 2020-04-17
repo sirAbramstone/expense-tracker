@@ -1,8 +1,9 @@
 import { getAccessorType, mutationTree, actionTree } from 'nuxt-typed-vuex';
 
-import * as expenseModule from '~/store/expenseModule.ts';
-import * as authModule from '~/store/authModule.ts';
+import * as expenseModule from '~/store/expenseModule';
+import * as authModule from '~/store/authModule';
 import * as infoModule from '~/store/infoModule';
+import * as categoryModule from '~/store/categoryModule';
 
 export const state = () => ({
   name: 'expenses tracker',
@@ -20,6 +21,10 @@ export const actions = actionTree(
         `http://data.fixer.io/api/latest?access_key=${key}&symbols=USD,EUR,RUB`
       );
       return await res.json();
+    },
+    getUid(): string | null {
+      const user = this.$fireAuth.currentUser;
+      return user ? user.uid : null;
     },
   }
 );
@@ -46,5 +51,6 @@ export const accessorType = getAccessorType({
     expenseModule,
     authModule,
     infoModule,
+    categoryModule,
   },
 });
