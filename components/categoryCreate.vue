@@ -47,10 +47,18 @@ export default defineComponent({
     },
   },
   methods: {
-    createHandler() {
+    async createHandler() {
       if (this.$v.$invalid) {
-
+        this.$v.$touch();
+        return;
       }
+
+      try {
+        await this.$accessor.categoryModule.createCategory({
+          title: this.name,
+          limit: this.limit,
+        });
+      } catch (e) {}
     },
   },
   validations: {

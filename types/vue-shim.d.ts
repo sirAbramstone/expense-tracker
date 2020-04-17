@@ -1,6 +1,6 @@
 import { accessorType } from '~/store';
 import VueRouter, { Route } from 'vue-router';
-import env from '../.nuxt/nuxt-env';
+import env from '~/.nuxt/nuxt-env';
 
 declare module '*.vue' {
   // @ts-ignore
