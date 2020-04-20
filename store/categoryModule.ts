@@ -1,9 +1,17 @@
-import { actionTree } from 'nuxt-typed-vuex';
+import { mutationTree, actionTree } from 'nuxt-typed-vuex';
 import { Category } from '~/interfaces/Category';
 
-export const state = () => ({});
+export const state = () => ({
+  categories: [] as Category[],
+});
 
 type CategoryModuleState = ReturnType<typeof state>;
+
+export const mutations = mutationTree(state, {
+  addCategory(state, category: Category) {
+    state.categories.push(category);
+  },
+});
 
 export const actions = actionTree(
   { state },
@@ -18,7 +26,7 @@ export const actions = actionTree(
           .ref(`users/${uid}/categories`)
           .push({ name, limit });
 
-        return { name, limit, id: key };
+        commit('addCategory', { name, limit, id: key });
       } catch (e) {
         commit('setError', e, { root: true });
         throw e;

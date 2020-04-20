@@ -24,24 +24,36 @@
 import { defineComponent } from '@vue/composition-api';
 import { required, minValue } from 'vuelidate/lib/validators';
 import { Category } from '~/interfaces/Category';
+import { UserException } from '~/utils/UserException';
 
 export default defineComponent({
   name: 'CategoryCreate',
+
+  props: {
+    categories: {
+      type: Array as () => Category[],
+    },
+  },
+
   data: (): Category => ({
     name: '',
-    limit: 1,
+    limit: 100,
   }),
+
   computed: {
     isRequiredName(): boolean {
       return this.$isDirty('name') && this.$isRequired('name');
     },
+
     isRequiredLimit(): boolean {
       return this.$isDirty('limit') && this.$isRequired('limit');
     },
+
     isInvalidLimit(): boolean {
       return this.$isDirty('limit') && this.$v.limit.$invalid;
     },
   },
+
   methods: {
     async createHandler() {
       if (this.$v.$invalid) {
@@ -50,14 +62,40 @@ export default defineComponent({
       }
 
       try {
-        const category = await this.$accessor.categoryModule.createCategory({
-          name: this.name,
-          limit: this.limit,
-        });
-        console.log(category);
-      } catch (e) {}
+        if (this.categories.find(({ name }: Category) => name === this.name)) {
+          throw new UserException(`Категория ${this.name} уже существует`);
+        }
+        await this.createCategory();
+
+        this.name = '';
+        this.limit = 100;
+        this.$v.$reset();
+      } catch (e) {
+        this.showError(e);
+      }
+    },
+
+    async createCategory() {
+      await this.$accessor.categoryModule.createCategory({
+        name: this.name,
+        limit: this.limit,
+      });
+      this.$toast.global.my_message({
+        message: `Категория ${this.name} была создана`,
+      });
+    },
+
+    showError(e) {
+      if (e.message) {
+        this.$toast.global.my_error({ message: e.message });
+        return;
+      }
+      this.$toast.global.my_error({
+        message: `Произошла ошибка при создании категории ${this.name}`,
+      });
     },
   },
+
   validations: {
     name: { required },
     limit: { required, minValue: minValue(100) },
