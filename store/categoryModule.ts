@@ -44,16 +44,10 @@ export const actions = actionTree(
           await this.$fireDb.ref(`users/${uid}/categories`).once('value')
         ).val() ?? {};
 
-      const categories = Object.keys(catsObj).reduce<Category[]>(
-        (cats, key: string): Category[] => {
-          cats.push({
-            name: catsObj[key].name,
-            limit: catsObj[key].limit,
-          });
-          return cats;
-        },
-        []
-      );
+      const categories = Object.keys(catsObj).map((key: string) => ({
+        ...catsObj[key],
+        id: key,
+      }));
 
       commit('setCategories', categories);
     },

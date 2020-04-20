@@ -32,6 +32,7 @@ export default defineComponent({
   props: {
     categories: {
       type: Array as () => Category[],
+      default: () => [],
     },
   },
 
@@ -62,13 +63,14 @@ export default defineComponent({
       }
 
       try {
-        if (
-          this.categories.find(
-            ({ name }: Category) =>
-              name.toLowerCase() === this.name.toLowerCase()
-          )
-        ) {
-          throw new UserException(`Категория ${this.name} уже существует`);
+        const existedCat = this.categories.find(
+          ({ name }: Category) => name.toLowerCase() === this.name.toLowerCase()
+        );
+
+        if (existedCat) {
+          throw new UserException(
+            `Категория ${existedCat.name} уже существует`
+          );
         }
 
         await this.createCategory();
