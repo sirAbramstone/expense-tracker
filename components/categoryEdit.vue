@@ -5,8 +5,8 @@
 
     form
       md-field
-        md-select#category
-          md-option Category
+        md-select#category(v-model="category" name="category")
+          md-option(v-for="cat in categories" :key="cat.id" :value="cat.name") {{ cat.name }}
         label(for="category") Выберите категорию
 
       md-field
@@ -24,9 +24,21 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from '@vue/composition-api';
+import { Category } from '~/interfaces/Category';
+
+export default defineComponent({
   name: 'CategoryEdit',
-};
+  props: {
+    categories: {
+      type: Array as () => Category[],
+      default: () => [],
+    },
+  },
+  data: () => ({
+    category: '',
+  }),
+});
 </script>
 
 <style scoped></style>
