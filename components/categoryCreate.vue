@@ -62,9 +62,15 @@ export default defineComponent({
       }
 
       try {
-        if (this.categories.find(({ name }: Category) => name === this.name)) {
+        if (
+          this.categories.find(
+            ({ name }: Category) =>
+              name.toLowerCase() === this.name.toLowerCase()
+          )
+        ) {
           throw new UserException(`Категория ${this.name} уже существует`);
         }
+
         await this.createCategory();
 
         this.name = '';

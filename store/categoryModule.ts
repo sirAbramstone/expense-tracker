@@ -11,6 +11,10 @@ export const mutations = mutationTree(state, {
   addCategory(state, category: Category) {
     state.categories.push(category);
   },
+
+  setCategories(state, categories: Category[]) {
+    state.categories = categories;
+  },
 });
 
 export const actions = actionTree(
@@ -31,6 +35,27 @@ export const actions = actionTree(
         commit('setError', e, { root: true });
         throw e;
       }
+    },
+
+    async fetchCategories({ dispatch, commit }) {
+      const uid = await dispatch('getUid', null, { root: true });
+      const catsObj =
+        (
+          await this.$fireDb.ref(`users/${uid}/categories`).once('value')
+        ).val() ?? {};
+
+      const categories = Object.keys(catsObj).reduce<Category[]>(
+        (cats, key: string): Category[] => {
+          cats.push({
+            name: catsObj[key].name,
+            limit: catsObj[key].limit,
+          });
+          return cats;
+        },
+        []
+      );
+
+      commit('setCategories', categories);
     },
   }
 );

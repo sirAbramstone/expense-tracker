@@ -3,9 +3,11 @@
     .page-title
       h3 Категории
     section
-      .md-layout.md-gutter
+      loader(v-if="isLoading")
+
+      .md-layout.md-gutter(v-else)
         category-create(:categories="categories")
-        category-edit
+        category-edit(:categories="categories")
 </template>
 
 <script lang="ts">
@@ -20,10 +22,17 @@ export default defineComponent({
     CategoryCreate,
     CategoryEdit,
   },
+  data: () => ({
+    isLoading: true,
+  }),
   computed: {
     categories(): Category[] {
       return this.$accessor.categoryModule.categories;
     },
+  },
+  async mounted() {
+    await this.$accessor.categoryModule.fetchCategories();
+    this.isLoading = false;
   },
 });
 </script>
