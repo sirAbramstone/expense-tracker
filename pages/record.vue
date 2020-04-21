@@ -12,7 +12,7 @@
 
       form.md-layout-item.md-size-50.md-small-size-100(v-else novalidate @submit.prevent="submitHandler")
         md-field
-          md-select#category(v-model="category" name="category" md-dense)
+          md-select#category(v-model="categoryId" name="category" md-dense)
             md-option(v-for="cat in categories" :key="cat.id" :value="cat.id") {{ cat.name }}
           label(for="category") Выберите категорию
 
@@ -43,7 +43,7 @@ export default defineComponent({
   name: 'Record',
   data: () => ({
     isLoading: true,
-    category: null,
+    categoryId: null,
     type: 'outcome',
     amount: 1,
     description: '',
@@ -51,6 +51,11 @@ export default defineComponent({
   computed: {
     categories(): Category[] {
       return this.$accessor.categoryModule.categories;
+    },
+
+    canCreateRecord(): boolean {
+      if (this.type === 'income') return true;
+      return this.$accessor.infoModule.bill >= this.amount;
     },
   },
   async mounted(): Promise<any> {
@@ -62,7 +67,26 @@ export default defineComponent({
     this.isLoading = false;
   },
   methods: {
-    submitHandler() {},
+    async submitHandler() {
+      if (this.$isInvalidForm()) return;
+
+      if (this.canCreateRecord) {
+        try {
+          const { categoryId, type, amount, description } = this;
+          await this.$accessor.recordModule.createRecord({
+            categoryId,
+            type,
+            amount,
+            description,
+            date: new Date().toJSON(),
+          });
+        } catch (e) {}
+      } else {
+        this.$toast.global.my_error({
+          message: 'На счете недостаточно средств для данной записи',
+        });
+      }
+    },
   },
   validations: {
     type: { required },
