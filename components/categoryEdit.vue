@@ -79,10 +79,7 @@ export default defineComponent({
 
   methods: {
     async changeHandler() {
-      if (this.$v.$invalid) {
-        this.$v.$touch();
-        return;
-      }
+      if (this.$isInvalidForm()) return;
 
       try {
         await this.changeCategory();

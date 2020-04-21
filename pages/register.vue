@@ -79,10 +79,8 @@ export default defineComponent({
   },
   methods: {
     async onSubmit(): Promise<T> {
-      if (this.$v.$invalid) {
-        this.$v.$touch();
-        return;
-      }
+      if (this.$isInvalidForm()) return;
+
       const formData: RegisterData = {
         email: this.email,
         password: this.password,

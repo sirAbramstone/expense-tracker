@@ -8,5 +8,12 @@ export const validateChecks = {
     $isDirty(key: ValidationKeys): boolean {
       return this.$v[key].$dirty;
     },
+    $isInvalidForm(): boolean {
+      if (this.$v.$invalid) {
+        this.$v.$touch();
+        return true;
+      }
+      return false;
+    },
   },
 };

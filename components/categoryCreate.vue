@@ -57,10 +57,7 @@ export default defineComponent({
 
   methods: {
     async createHandler() {
-      if (this.$v.$invalid) {
-        this.$v.$touch();
-        return;
-      }
+      if (this.$isInvalidForm()) return;
 
       try {
         const existedCat = this.categories.find(
