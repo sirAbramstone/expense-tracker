@@ -6,7 +6,7 @@ export const validateChecks = {
       return !this.$v[key].required;
     },
     $isDirty(key: ValidationKeys): boolean {
-      return this.$v![key].$dirty;
+      return this.$v[key].$dirty;
     },
   },
 };

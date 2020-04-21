@@ -51,5 +51,20 @@ export const actions = actionTree(
 
       commit('setCategories', categories);
     },
+
+    async updateCategory({ dispatch, commit }, { name, limit, id }: Category) {
+      try {
+        const uid = await dispatch('getUid', null, { root: true });
+        await this.$fireDb
+          .ref(`users/${uid}/categories`)
+          .child(id)
+          .update({ name, limit });
+
+        await dispatch('fetchCategories');
+      } catch (e) {
+        commit('setError', e, { root: true });
+        throw e;
+      }
+    },
   }
 );
