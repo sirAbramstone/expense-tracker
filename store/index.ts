@@ -4,6 +4,7 @@ import * as expenseModule from '~/store/expenseModule';
 import * as authModule from '~/store/authModule';
 import * as infoModule from '~/store/infoModule';
 import * as categoryModule from '~/store/categoryModule';
+import * as recordModule from '~/store/recordModule';
 
 export const state = () => ({
   name: 'expenses tracker',
@@ -52,5 +53,6 @@ export const accessorType = getAccessorType({
     authModule,
     infoModule,
     categoryModule,
+    recordModule,
   },
 });
