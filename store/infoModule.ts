@@ -1,7 +1,7 @@
 import { actionTree, mutationTree } from 'nuxt-typed-vuex';
 
 export const state = () => ({
-  info: null,
+  info: {},
 });
 
 type InfoModuleState = ReturnType<typeof state>;
@@ -22,6 +22,18 @@ export const actions = actionTree(
         throw e;
       }
     },
+
+    async updateInfo({ state, dispatch, commit }, toUpdate) {
+      try {
+        const uid = await dispatch('getUid', null, { root: true });
+        const updatedData = { ...state.info, ...toUpdate };
+        await this.$fireDb.ref(`users/${uid}/info`).update(updatedData);
+
+        commit('setInfo', updatedData);
+      } catch (e) {
+        commit('setError', e, { root: true });
+      }
+    },
   }
 );
 
@@ -30,6 +42,6 @@ export const mutations = mutationTree(state, {
     state.info = info;
   },
   clearInfo(state): void {
-    state.info = null;
+    state.info = {};
   },
 });

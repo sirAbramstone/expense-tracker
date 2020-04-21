@@ -33,7 +33,7 @@ export default defineComponent({
     isLoading: true,
   }),
   async mounted(): Promise<any> {
-    if (!this.$accessor.infoModule.info) {
+    if (!Object.keys(this.$accessor.infoModule.info).length) {
       await this.$accessor.infoModule.fetchInfo();
     }
 

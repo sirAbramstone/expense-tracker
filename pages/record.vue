@@ -53,9 +53,13 @@ export default defineComponent({
       return this.$accessor.categoryModule.categories;
     },
 
+    bill(): number {
+      return this.$accessor.infoModule.info.bill;
+    },
+
     canCreateRecord(): boolean {
       if (this.type === 'income') return true;
-      return this.$accessor.infoModule.bill >= this.amount;
+      return this.bill >= this.amount;
     },
   },
   async mounted(): Promise<any> {
@@ -67,25 +71,45 @@ export default defineComponent({
     this.isLoading = false;
   },
   methods: {
-    async submitHandler() {
+    async submitHandler(): Promise<any> {
       if (this.$isInvalidForm()) return;
 
       if (this.canCreateRecord) {
         try {
-          const { categoryId, type, amount, description } = this;
-          await this.$accessor.recordModule.createRecord({
-            categoryId,
-            type,
-            amount,
-            description,
-            date: new Date().toJSON(),
-          });
+          await this.createRecord();
         } catch (e) {}
       } else {
         this.$toast.global.my_error({
           message: 'На счете недостаточно средств для данной записи',
         });
       }
+    },
+
+    async createRecord(): Promise<any> {
+      const { categoryId, type, amount, description } = this;
+
+      await this.$accessor.recordModule.createRecord({
+        categoryId,
+        type,
+        amount,
+        description,
+        date: new Date().toJSON(),
+      });
+
+      const bill =
+        this.type === 'income'
+          ? this.bill + this.amount
+          : this.bill - this.amount;
+
+      await this.$accessor.infoModule.updateInfo({ bill });
+
+      this.$toast.global.my_message({
+        message: `Запись '${this.description}' успешно создана`,
+      });
+
+      this.$v.$reset();
+      this.amount = 1;
+      this.description = '';
     },
   },
   validations: {
