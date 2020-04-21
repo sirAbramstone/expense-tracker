@@ -32,17 +32,20 @@ import { Category } from '~/interfaces/Category';
 
 export default defineComponent({
   name: 'CategoryEdit',
+
   props: {
     categories: {
       type: Array as () => Category[],
       default: () => [],
     },
   },
+
   data: () => ({
     current: null,
     name: '',
     limit: 100,
   }),
+
   computed: {
     isRequiredName(): boolean {
       return this.$isDirty('name') && this.$isRequired('name');
@@ -56,6 +59,7 @@ export default defineComponent({
       return this.$isDirty('limit') && this.$v.limit.$invalid;
     },
   },
+
   watch: {
     current(catId: string): void {
       const { name, limit } = this.categories.find(
@@ -65,12 +69,14 @@ export default defineComponent({
       this.limit = limit;
     },
   },
+
   created(): void {
     const { id, name, limit } = this.categories[0];
     this.current = id;
     this.name = name;
     this.limit = limit;
   },
+
   methods: {
     async changeHandler() {
       if (this.$v.$invalid) {
@@ -79,14 +85,23 @@ export default defineComponent({
       }
 
       try {
-        await this.$accessor.categoryModule.updateCategory({
-          id: this.current,
-          name: this.name,
-          limit: this.limit,
-        });
+        await this.changeCategory();
       } catch (e) {}
     },
+
+    async changeCategory() {
+      await this.$accessor.categoryModule.updateCategory({
+        id: this.current,
+        name: this.name,
+        limit: this.limit,
+      });
+
+      this.$toast.global.my_message({
+        message: `Категория ${this.name} была успешно изменена`,
+      });
+    },
   },
+
   validations: {
     name: { required },
     limit: { required, minValue: minValue(100) },
