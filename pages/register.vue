@@ -5,19 +5,19 @@
         span.md-title Домашняя бухгалтерия
 
       md-card-content
-        md-field(:class="{ 'md-invalid': isInvalidEmail || isRequireEmail }")
+        md-field(:class="{ 'md-invalid': $isInvalid('email') || $isRequired('email') }")
           md-input#email(v-model.trim="$v.email.$model" type="text")
           label(for="email") Email
-          small.helper-text(v-if="isRequireEmail") Поле Email обязательно для заполнения
-          small.helper-text(v-else-if="isInvalidEmail") Введите корректный Email
-        md-field(:class="{ 'md-invalid': isRequirePass }")
+          small.helper-text(v-if="$isRequired('email')") Поле Email обязательно для заполнения
+          small.helper-text(v-else-if="$isInvalid('email')") Введите корректный Email
+        md-field(:class="{ 'md-invalid': $isRequired('password') }")
           md-input#password(v-model.trim="$v.password.$model" type="password")
           label(for="password") Пароль
-          small.helper-text(v-if="isRequirePass") Поле Password обязательно для заполнения
-        md-field(:class="{ 'md-invalid': isRequireName || !nameHasMinLength }")
+          small.helper-text(v-if="$isRequired('password')") Поле Password обязательно для заполнения
+        md-field(:class="{ 'md-invalid': $isRequired('name') || !nameHasMinLength }")
           md-input#name(v-model.trim="$v.name.$model" type="text")
           label(for="name") Имя
-          small.helper-text(v-if="isRequireName") Поле Name обязательно для заполнения
+          small.helper-text(v-if="$isRequired('name')") Поле Name обязательно для заполнения
           small.helper-text(v-else-if="!nameHasMinLength")
             | Имя должно содержать не менее {{ $v.name.$params.minLength.min }} символов
 
@@ -55,18 +55,6 @@ export default defineComponent({
     agree: false,
   }),
   computed: {
-    isRequirePass(): boolean {
-      return this.$isDirty('password') && this.$isRequired('password');
-    },
-    isInvalidEmail(): boolean {
-      return this.$isDirty('email') && this.$v.email.$invalid;
-    },
-    isRequireEmail(): boolean {
-      return this.$isDirty('email') && this.$isRequired('email');
-    },
-    isRequireName(): boolean {
-      return this.$isDirty('name') && this.$isRequired('name');
-    },
     nameHasMinLength(): boolean {
       return this.$isDirty('name') && this.$v.name.minLength;
     },

@@ -19,16 +19,16 @@
         md-radio(v-model="type" name="type" value="income") Доход
         md-radio(v-model="type" name="type" value="outcome") Расход
 
-        md-field(:class="{'md-invalid': isAmountRequired || isAmountInvalid}")
+        md-field(:class="{'md-invalid': $isRequired('amount') || $isInvalid('amount')}")
           md-input#amount(v-model.number="$v.amount.$model" name="amount" type="number")
           label(for="amount") Сумма
-          span.md-error(v-if="isAmountRequired") Введите сумму
-          span.md-error(v-else-if="isAmountInvalid") Сумма должна быть не меньше {{ $v.amount.$params.minValue.min }}
+          span.md-error(v-if="$isRequired('amount')") Введите сумму
+          span.md-error(v-else-if="$isInvalid('amount')") Сумма должна быть не меньше {{ $v.amount.$params.minValue.min }}
 
-        md-field(:class="{'md-invalid': isDescRequired }")
+        md-field(:class="{'md-invalid': $isRequired('description') }")
           md-input#description(v-model.trim="$v.description.$model" type="text")
           label(for="description") Описание
-          span.md-error(v-if="isDescRequired") Введите описание записи
+          span.md-error(v-if="$isRequired('description')") Введите описание записи
 
         md-button.md-raised.md-primary(type="submit") Создать
           md-icon send
@@ -51,18 +51,6 @@ export default defineComponent({
   computed: {
     categories(): Category[] {
       return this.$accessor.categoryModule.categories;
-    },
-
-    isAmountRequired(): boolean {
-      return this.$isDirty('amount') && this.$isRequired('amount');
-    },
-
-    isAmountInvalid(): boolean {
-      return this.$isInvalid('amount');
-    },
-
-    isDescRequired(): boolean {
-      return this.$isDirty('description') && this.$isRequired('description');
     },
   },
   async mounted(): Promise<any> {

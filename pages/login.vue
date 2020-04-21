@@ -4,15 +4,15 @@
       md-card-header
         span.md-title Домашняя бухгалтерия
       md-card-content
-        md-field(:class="{ 'md-invalid': isInvalidEmail || isRequireEmail }")
+        md-field(:class="{ 'md-invalid': $isInvalid('email') || $isRequired('email') }")
           md-input#email(v-model.trim="$v.email.$model" type="text")
           label(for="email") Email
-          small.helper-text(v-if="isRequireEmail") Поле Email обязательно для заполнения
-          small.helper-text(v-else-if="isInvalidEmail") Введите корректный Email
-        md-field(:class="{ 'md-invalid': isRequirePass }")
+          small.helper-text(v-if="$isRequired('email')") Поле Email обязательно для заполнения
+          small.helper-text(v-else-if="$isInvalid('email')") Введите корректный Email
+        md-field(:class="{ 'md-invalid': $isRequired('password') }")
           md-input#password(v-model.trim="$v.password.$model" type="password")
           label(for="password") Пароль
-          small.helper-text(v-if="isRequirePass") Поле Password обязательно для заполнения
+          small.helper-text(v-if="$isRequired('password')") Поле Password обязательно для заполнения
       md-card-actions
         md-button.md-primary.md-raised.auth-submit(type="submit") Войти
           md-icon send
@@ -38,17 +38,6 @@ export default defineComponent({
     email: '',
     password: '',
   }),
-  computed: {
-    isRequirePass(): boolean {
-      return this.$isDirty('password') && this.$isRequired('password');
-    },
-    isInvalidEmail(): boolean {
-      return this.$isDirty('email') && this.$v.email.$invalid;
-    },
-    isRequireEmail(): boolean {
-      return this.$isDirty('email') && this.$isRequired('email');
-    },
-  },
   methods: {
     async onSubmit(): Promise<T> {
       if (this.$isInvalidForm()) return;

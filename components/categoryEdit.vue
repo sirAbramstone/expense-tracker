@@ -9,17 +9,17 @@
           md-option(v-for="cat in categories" :key="cat.id" :value="cat.id") {{ cat.name }}
         label(for="category") Выберите категорию
 
-      md-field(:class="{'md-invalid': isRequiredName}")
+      md-field(:class="{'md-invalid': $isRequired('name')}")
         md-input#name(v-model.trim="$v.name.$model" type="text")
         label(for="name") Название
-        span.md-error(v-if="isRequiredName") Поле название обязательно для заполнения
+        span.md-error(v-if="$isRequired('name')") Поле название обязательно для заполнения
 
-      md-field(:class="{'md-invalid': isRequiredLimit || isInvalidLimit}")
+      md-field(:class="{'md-invalid': $isRequired('limit') || $isInvalid('limit')}")
         md-input#limit(v-model.number="$v.limit.$model" type="number")
         label(for="limit") Лимит
-        span.md-error(v-if="isInvalidLimit")
+        span.md-error(v-if="$isInvalid('limit')")
           | Минимальная величина должна быть не меньше {{ $v.limit.$params.minValue.min }}
-        span.md-error(v-else-if="isRequiredLimit") Поле лимит обязательно для заполнения
+        span.md-error(v-else-if="$isRequired('limit')") Поле лимит обязательно для заполнения
 
       md-button.md-raised.md-primary(type="submit") Обновить
         md-icon send
@@ -45,20 +45,6 @@ export default defineComponent({
     name: '',
     limit: 100,
   }),
-
-  computed: {
-    isRequiredName(): boolean {
-      return this.$isDirty('name') && this.$isRequired('name');
-    },
-
-    isRequiredLimit(): boolean {
-      return this.$isDirty('limit') && this.$isRequired('limit');
-    },
-
-    isInvalidLimit(): boolean {
-      return this.$isDirty('limit') && this.$v.limit.$invalid;
-    },
-  },
 
   watch: {
     current(catId: string): void {
