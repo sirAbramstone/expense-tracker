@@ -8,11 +8,11 @@ export const state = () => ({
 type CategoryModuleState = ReturnType<typeof state>;
 
 export const mutations = mutationTree(state, {
-  addCategory(state, category: Category) {
+  addCategory(state: CategoryModuleState, category: Category) {
     state.categories.push(category);
   },
 
-  setCategories(state, categories: Category[]) {
+  setCategories(state: CategoryModuleState, categories: Category[]) {
     state.categories = categories;
   },
 });
@@ -21,13 +21,12 @@ export const actions = actionTree(
   { state },
   {
     async createCategory(
-      { commit, dispatch },
+      { commit, rootState },
       { name, limit }: Category
     ): Promise<any> {
       try {
-        const uid = await dispatch('getUid', null, { root: true });
         const { key } = await this.$fireDb
-          .ref(`users/${uid}/categories`)
+          .ref(`users/${rootState.uid}/categories`)
           .push({ name, limit });
 
         commit('addCategory', { name, limit, id: key });
@@ -37,11 +36,12 @@ export const actions = actionTree(
       }
     },
 
-    async fetchCategories({ dispatch, commit }) {
-      const uid = await dispatch('getUid', null, { root: true });
+    async fetchCategories({ rootState, commit }) {
       const catsObj =
         (
-          await this.$fireDb.ref(`users/${uid}/categories`).once('value')
+          await this.$fireDb
+            .ref(`users/${rootState.uid}/categories`)
+            .once('value')
         ).val() ?? {};
 
       const categories = Object.keys(catsObj).map((key: string) => ({
@@ -52,11 +52,13 @@ export const actions = actionTree(
       commit('setCategories', categories);
     },
 
-    async updateCategory({ dispatch, commit }, { name, limit, id }: Category) {
+    async updateCategory(
+      { rootState, dispatch, commit },
+      { name, limit, id }: Category
+    ) {
       try {
-        const uid = await dispatch('getUid', null, { root: true });
         await this.$fireDb
-          .ref(`users/${uid}/categories`)
+          .ref(`users/${rootState.uid}/categories`)
           .child(id)
           .update({ name, limit });
 

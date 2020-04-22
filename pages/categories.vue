@@ -8,7 +8,8 @@
       .md-layout.md-gutter(v-else)
         category-create(:categories="categories")
         category-edit(v-if="categories.length" :categories="categories")
-        p(v-else) Ни одной категории еще не создано.
+        .md-layout-item.md-small-size-100
+          p(v-else) Ни одной категории еще не создано.
 </template>
 
 <script lang="ts">

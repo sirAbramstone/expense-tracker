@@ -7,7 +7,7 @@ import * as categoryModule from '~/store/categoryModule';
 import * as recordModule from '~/store/recordModule';
 
 export const state = () => ({
-  name: 'expenses tracker',
+  uid: null,
   error: null,
 });
 
@@ -23,14 +23,21 @@ export const actions = actionTree(
       );
       return await res.json();
     },
-    getUid(): string | null {
+
+    getUid({ commit }): void {
       const user = this.$fireAuth.currentUser;
-      return user ? user.uid : null;
+      if (user) {
+        commit('setUid', user.uid);
+      }
     },
   }
 );
 
 export const mutations = mutationTree(state, {
+  setUid(state, uid) {
+    state.uid = uid;
+  },
+
   setError(state, error) {
     state.error = error;
   },

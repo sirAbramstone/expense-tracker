@@ -9,11 +9,10 @@ type InfoModuleState = ReturnType<typeof state>;
 export const actions = actionTree(
   { state },
   {
-    async fetchInfo({ dispatch, commit }): Promise<any> {
+    async fetchInfo({ rootState, commit }): Promise<any> {
       try {
-        const uid = await dispatch('getUid', null, { root: true });
         const info = (
-          await this.$fireDb.ref(`/users/${uid}/info`).once('value')
+          await this.$fireDb.ref(`/users/${rootState.uid}/info`).once('value')
         ).val();
 
         commit('setInfo', info);
@@ -23,11 +22,12 @@ export const actions = actionTree(
       }
     },
 
-    async updateInfo({ state, dispatch, commit }, toUpdate) {
+    async updateInfo({ rootState, state, commit }, toUpdate) {
       try {
-        const uid = await dispatch('getUid', null, { root: true });
         const updatedData = { ...state.info, ...toUpdate };
-        await this.$fireDb.ref(`users/${uid}/info`).update(updatedData);
+        await this.$fireDb
+          .ref(`users/${rootState.uid}/info`)
+          .update(updatedData);
 
         commit('setInfo', updatedData);
       } catch (e) {

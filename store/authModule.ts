@@ -8,9 +8,10 @@ type AuthModuleState = ReturnType<typeof state>;
 export const actions = actionTree(
   { state },
   {
-    async login({ commit }, { email, password }: User) {
+    async login({ commit, dispatch }, { email, password }: User) {
       try {
         await this.$fireAuth.signInWithEmailAndPassword(email, password);
+        await dispatch('getUid', null, { root: true });
       } catch (e) {
         commit('setError', e, { root: true });
         throw e;
@@ -22,11 +23,14 @@ export const actions = actionTree(
       commit('infoModule/clearInfo', null, { root: true });
     },
 
-    async register({ dispatch, commit }, { email, password, name }: User) {
+    async register(
+      { rootState, dispatch, commit },
+      { email, password, name }: User
+    ) {
       try {
         await this.$fireAuth.createUserWithEmailAndPassword(email, password);
-        const uid = await dispatch('getUid', null, { root: true });
-        await this.$fireDb.ref(`users/${uid}/info`).set({
+        await dispatch('getUid', null, { root: true });
+        await this.$fireDb.ref(`users/${rootState.uid}/info`).set({
           bill: 10000,
           name,
         });
