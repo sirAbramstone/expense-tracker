@@ -11,7 +11,7 @@ export const state = () => ({
   error: null,
 });
 
-type RootState = ReturnType<typeof state>;
+export type RootState = ReturnType<typeof state>;
 
 export const actions = actionTree(
   { state },

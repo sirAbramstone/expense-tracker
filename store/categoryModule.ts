@@ -1,5 +1,7 @@
-import { mutationTree, actionTree } from 'nuxt-typed-vuex';
+import { mutationTree, actionTree, getterTree } from 'nuxt-typed-vuex';
 import { Category } from '~/interfaces/Category';
+import { Record } from '~/interfaces/Record';
+import { RootState } from '~/store/index';
 
 export const state = () => ({
   categories: [] as Category[],
@@ -70,3 +72,28 @@ export const actions = actionTree(
     },
   }
 );
+
+export const getters = getterTree(state, {
+  progressCats(
+    state: CategoryModuleState,
+    _getters: unknown,
+    rootState: RootState
+  ) {
+    if (!rootState.recordModule.records.length) return [];
+
+    return state.categories.map((cat) => {
+      const spend = rootState.recordModule.records
+        .filter((r: Record) => r.categoryId === cat.id && r.type === 'outcome')
+        .reduce<number>((sum: number, { amount }: Record) => sum + amount, 0);
+
+      const percent = (100 * spend) / cat.limit;
+      const progressPercent = percent > 100 ? 100 : percent;
+
+      return {
+        ...cat,
+        progressPercent,
+        spend,
+      };
+    });
+  },
+});

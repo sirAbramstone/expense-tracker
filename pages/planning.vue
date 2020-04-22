@@ -2,11 +2,11 @@
   div
     .page-title
       h3 Планирование
-      h4 12 212
+      h4 {{ bill | currency }}
 
     loader(v-if="isLoading")
 
-    p(v-else-if="!categories.length")
+    p.md-alignment-center-center(v-else-if="!categories.length")
       | Категорий пока нет.
       router-link(to="/categories")  Добавить новую категорию
 
@@ -30,14 +30,17 @@ export default defineComponent({
   }),
   computed: {
     categories(): Category[] {
-      return this.$accessor.categoryModule.categories;
+      return this.$accessor.categoryModule.progressCats;
     },
     records(): Record[] {
       return this.$accessor.recordModule.records;
     },
+    bill(): number {
+      return this.$accessor.infoModule.info.bill;
+    },
   },
   async mounted() {
-    if (!this.categories.length) {
+    if (!this.$accessor.categoryModule.categories.length) {
       await this.$accessor.categoryModule.fetchCategories();
     }
     if (!this.records.length) {
