@@ -88,11 +88,13 @@ export const getters = getterTree(state, {
 
       const percent = (100 * spend) / cat.limit;
       const progressPercent = percent > 100 ? 100 : percent;
+      const left = cat.limit - spend;
 
       return {
         ...cat,
         progressPercent,
         spend,
+        left,
       };
     });
   },

@@ -10,6 +10,7 @@
           nuxt
 
       md-button.md-fab.md-primary.md-fab-bottom-right(to="/record")
+          md-tooltip(md-direction="top") Создать новую запись
           md-icon add
 </template>
 

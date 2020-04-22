@@ -4,18 +4,24 @@
       h3 Планирование
       h4 {{ bill | currency }}
 
-    loader(v-if="isLoading")
+    section.md-layout.md-alignment-center
+      loader(v-if="isLoading")
 
-    p.md-alignment-center-center(v-else-if="!categories.length")
-      | Категорий пока нет.
-      router-link(to="/categories")  Добавить новую категорию
+      p.md-layout-item(v-else-if="!categories.length")
+       | Категорий пока нет.
+       router-link(to="/categories")  Добавить новую категорию
 
-    section(v-else)
-      div
+      .md-layout-item.md-size-75.md-small-size-100.progress(
+        v-else
+        v-for="({id, name, spend, limit, progressPercent, left}) of categories"
+        :key="id"
+      )
         p
-          strong Девушка:
-          |  12 122 из 14 0000
-        md-progress-bar(md-mode="determinate" :md-value="40")
+          strong {{ name }}:
+          |  {{ spend | currency }} из {{ limit | currency }}
+        md-progress-bar(md-mode="determinate" :md-value="progressPercent")
+        md-tooltip.plan-tooltip(md-direction="top")
+          | {{ `${left < 0 ? 'Превышение на' : 'Осталось'} ${$options.filters.currency(Math.abs(left))}` }}
 </template>
 
 <script lang="ts">
@@ -51,4 +57,14 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.progress {
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  & > p {
+    margin-bottom: 0.5rem;
+  }
+}
+</style>
